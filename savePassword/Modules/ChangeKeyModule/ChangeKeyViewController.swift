@@ -4,11 +4,13 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
 
 	var presenter: ChangeKeyPresenterProtocol
     
-    var label = UILabel()
+    var keyLabel = UILabel()
+    var keyDescriptionLabel = UILabel()
     var keyField1 = UITextField()
     var keyField2 = UITextField()
     var keyField3 = UITextField()
     var keyField4 = UITextField()
+    var stackKey = UIStackView()
     var button = UIButton()
 
 
@@ -27,7 +29,7 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
         view = UIView()
         self.view = view
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
 
 	override func viewDidLoad() {
@@ -42,16 +44,41 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
     }
     
     func configure(){
-        label.text = Localization.Setting.changeKey
-
+        keyLabel.text = Localization.Setting.key
+        keyLabel.textColor = .label
+        keyLabel.font = UIFont.boldSystemFont(ofSize: 22)
+        keyDescriptionLabel.text = Localization.Setting.keyDescriotion
+        keyDescriptionLabel.textColor = .secondaryLabel
+        keyDescriptionLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        keyLabel.textAlignment = .center
+        keyDescriptionLabel.textAlignment = .center
+        
+        keyDescriptionLabel.lineBreakMode = .byWordWrapping // notice the 'b' instead of 'B'
+        keyDescriptionLabel.numberOfLines = 0
+        
+        stackKey.spacing = 15
+        stackKey.axis = .vertical
+        stackKey.alignment = .center
+        
         button.backgroundColor = .systemBlue
         button.setTitle(Localization.Setting.buttonChange, for: .normal)
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 10
         
         [keyField1, keyField2, keyField3, keyField4
-        
-        ].forEach({$0.backgroundColor = .systemGray})
+
+        ].forEach({
+            $0.layer.cornerRadius = 10
+            $0.keyboardType = .numberPad
+            $0.backgroundColor = .systemGray5
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.textColor = .label
+            $0.font = UIFont.boldSystemFont(ofSize: 25)
+            $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            $0.widthAnchor.constraint(equalToConstant: 180).isActive = true
+            stackKey.addArrangedSubview($0)
+        })
 
         
         button.addTarget(self, action: #selector(self.pressedButton), for: .touchUpInside)
@@ -61,48 +88,38 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
 
     
     func addAll(){
-        view.addSubview(label)
-        view.addSubview(keyField1)
-        view.addSubview(keyField2)
-        view.addSubview(keyField3)
-        view.addSubview(keyField4)
+        view.addSubview(keyLabel)
+        view.addSubview(keyDescriptionLabel)
+        view.addSubview(stackKey)
         view.addSubview(button)
     }
     
     func setupConstraints(){
-        label.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        keyField1.translatesAutoresizingMaskIntoConstraints = false
-        keyField2.translatesAutoresizingMaskIntoConstraints = false
-        keyField3.translatesAutoresizingMaskIntoConstraints = false
-        keyField4.translatesAutoresizingMaskIntoConstraints = false
+        keyLabel.translatesAutoresizingMaskIntoConstraints = false
+        keyDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackKey.translatesAutoresizingMaskIntoConstraints = false
+//        keyField1.translatesAutoresizingMaskIntoConstraints = false
+//        keyField2.translatesAutoresizingMaskIntoConstraints = false
+//        keyField3.translatesAutoresizingMaskIntoConstraints = false
+//        keyField4.translatesAutoresizingMaskIntoConstraints = false
 
         [
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            keyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            keyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            keyField1.widthAnchor.constraint(equalToConstant: 200),
-            keyField1.heightAnchor.constraint(equalToConstant: 30),
-            keyField1.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 40),
-            keyField1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-            keyField2.widthAnchor.constraint(equalToConstant: 200),
-            keyField2.heightAnchor.constraint(equalToConstant: 30),
-            keyField2.topAnchor.constraint(equalTo: keyField1.bottomAnchor, constant: 40),
-            keyField2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-            keyField3.widthAnchor.constraint(equalToConstant: 200),
-            keyField3.heightAnchor.constraint(equalToConstant: 30),
-            keyField3.topAnchor.constraint(equalTo: keyField2.bottomAnchor, constant: 40),
-            keyField3.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-            keyField4.widthAnchor.constraint(equalToConstant: 200),
-            keyField4.heightAnchor.constraint(equalToConstant: 30),
-            keyField4.topAnchor.constraint(equalTo: keyField3.bottomAnchor, constant: 40),
-            keyField4.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            keyDescriptionLabel.topAnchor.constraint(equalTo: keyLabel.bottomAnchor, constant: 15),
+            keyDescriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            keyDescriptionLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -40),
             
-            button.topAnchor.constraint(equalTo: keyField4.bottomAnchor, constant: 30),
+            stackKey.topAnchor.constraint(equalTo: keyDescriptionLabel.bottomAnchor, constant: 30),
+            stackKey.widthAnchor.constraint(equalToConstant: 165),
+            stackKey.heightAnchor.constraint(equalToConstant: 205),
+            stackKey.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            button.topAnchor.constraint(equalTo: stackKey.bottomAnchor, constant: 30),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -60)
   
         ].forEach({$0.isActive = true})
 

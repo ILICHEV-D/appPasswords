@@ -42,7 +42,7 @@ class ListPresenter: ListPresenterProtocol {
         DispatchQueue.global().async {
             self.appDepedency?.cacheService.getDataFromCash()
             DispatchQueue.main.sync {
-                (self.view as! ListViewController).tableView.reloadData()
+                (self.view as! ListViewController).collectionView.reloadData()
             }
             print("Успешно обновлен экран")
         }

@@ -14,6 +14,7 @@ import Foundation
 protocol ShowKeyViewProtocol: class {
     func setupConstraints()
     func addAll()
+    func configure()
 }
 
 // MARK: Presenter -
@@ -32,5 +33,6 @@ class ShowKeyPresenter: ShowKeyPresenterProtocol {
     func viewDidLoad() {
         view?.addAll()
         view?.setupConstraints()
+        view?.configure()
     }
 }

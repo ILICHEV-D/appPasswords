@@ -42,6 +42,12 @@ class ChangeKeyPresenter: ChangeKeyPresenterProtocol {
             (self.view as! ChangeKeyViewController).present(alertController, animated: true, completion: nil)
             return
         }
+        
+        if (Int(key1)!>4294967295) || (Int(key2)!>4294967295) || (Int(key3)!>4294967295) || (Int(key4)!>4294967295){
+            (self.view as! ChangeKeyViewController).present(alertController, animated: true, completion: nil)
+            return
+        }
+        
     
         let key: [UInt32] = [UInt32(Int(key1)!), UInt32(Int(key2)!), UInt32(Int(key3)!), UInt32(Int(key4)!)]
         

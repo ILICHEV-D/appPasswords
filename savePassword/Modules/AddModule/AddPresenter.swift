@@ -15,6 +15,7 @@ import UIKit
 protocol AddViewProtocol: class {
     func addAll()
     func setupConstraints()
+    func configure()
 
 }
 
@@ -22,27 +23,43 @@ protocol AddViewProtocol: class {
 protocol AddPresenterProtocol: class {
 	var view: AddViewProtocol? { get set }
     var appDepedency: AppDependency? {get set}
+    var name: String? { get }
     func viewDidLoad()
     func buttonPressedPresenter()
 }
 
 class AddPresenter: AddPresenterProtocol {
-
+    
     weak var view: AddViewProtocol?
     var appDepedency: AppDependency?
+    var name: String?
 
 
     func viewDidLoad() {
         view?.addAll()
         view?.setupConstraints()
+        view?.configure()
     }
     
     func buttonPressedPresenter(){
         let login = (self.view as! AddViewController).loginField.text ?? ""
         let password = (self.view as! AddViewController).passwordField.text ?? ""
-        Common.addLoginAndPassword(login: login, password: password, crypt: appDepedency!.cryptService )
+        let icon = (self.view as! AddViewController).iconField.text ?? ""
+        
+        let alertController = UIAlertController(title: Localization.Add.error, message: Localization.Add.errorDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: Localization.Add.ok, style: .cancel, handler: nil))
+        
+        if login.isEmpty || password.isEmpty || icon.isEmpty {
+            (self.view as! AddViewController).present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        
+        Common.addLoginAndPassword(login: login, password: password, icon: name ?? icon, crypt: appDepedency!.cryptService )
+        print(Common.listOfLoginAndPassword)
         (self.view as! AddViewController).loginField.text = ""
         (self.view as! AddViewController).passwordField.text = ""
+        (self.view as! AddViewController).iconField.text = ""
         reloadScreens()
     }
     

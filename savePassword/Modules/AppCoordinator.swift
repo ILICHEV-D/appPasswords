@@ -21,11 +21,12 @@ class AppCoordinator{
     }
     
     func begin(){
+        
+        Common.getAllIcons()
+        
         setupList()
         setupAdd()
         setupSetting()
-
-        
     //    listVC.loadViewIfNeeded()
     //    newPasswordVC.loadViewIfNeeded()
    //     settingVC.loadViewIfNeeded()

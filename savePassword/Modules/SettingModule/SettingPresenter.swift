@@ -14,6 +14,7 @@ import Foundation
 protocol SettingViewProtocol: class {
     func addAll()
     func setupConstraints()
+    func configure()
 
 }
 
@@ -35,6 +36,7 @@ class SettingPresenter: SettingPresenterProtocol {
     func viewDidLoad() {
         view?.addAll()
         view?.setupConstraints()
+        view?.configure()
     }
     
     func goToShowKey(){

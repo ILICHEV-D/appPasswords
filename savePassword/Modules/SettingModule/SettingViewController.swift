@@ -30,9 +30,8 @@ class SettingViewController: UIViewController, SettingViewProtocol {
     override func loadView() {
         let view = UIView()
         tableView.alwaysBounceVertical = true
-    //    view.addSubview(tableView)
-        view.backgroundColor = #colorLiteral(red: 0.9567590356, green: 0.9569227099, blue: 0.9567485452, alpha: 1)
         self.view = view
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
@@ -46,11 +45,15 @@ class SettingViewController: UIViewController, SettingViewProtocol {
         tableView.delegate = self
     }
     
+    func configure(){
+        view.backgroundColor = .systemBackground
+        tableView.separatorStyle = .none
+
+    }
+    
     func addAll(){
         view.addSubview(tableView)
     }
-
-    
     
 
     func setupConstraints(){
@@ -78,6 +81,8 @@ extension SettingViewController: UITableViewDataSource {
     
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "Cell")
+    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+  //  cell.textLabel?.textColor = UIColor.secondaryLabel
     switch indexPath.row {
     case 0:
         cell.textLabel?.text = Localization.Setting.showKey
@@ -102,5 +107,11 @@ extension SettingViewController: UITableViewDelegate {
         default:
             print("error")
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+
 }
