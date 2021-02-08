@@ -86,22 +86,14 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
                 viewForLP.topAnchor.constraint(equalTo: commonView.topAnchor, constant: 90).isActive = true
                 
             }
-            
-
             previous = viewForLP
         }
-        commonView.addSubview(deleteButton)
+        view.addSubview(deleteButton)
     }
     
     func configure(){
         
-        
-        
-   //     commonView.backgroundColor = .systemGray5
-
         nameView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        
         let index = Common.listOfIcons.firstIndex(where: {$0.name == nameLabel.text})
         if let index = index {
             nameView.backgroundColor = Common.listOfIcons[index].color
@@ -123,15 +115,17 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
         commonView.layer.shadowOffset = CGSize(width: 3, height: 3)
         
         deleteButton.setTitle(Localization.Password.buttonDelete, for: .normal)
-        deleteButton.backgroundColor = .systemBlue
+        deleteButton.backgroundColor = Styles.Color.appBaseColor
         deleteButton.titleLabel?.textColor = .white
         deleteButton.layer.cornerRadius = 15
+        deleteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         deleteButton.addTarget(self, action: #selector(self.deleteButtonAction), for: .touchUpInside)
     }
     
     @IBAction func deleteButtonAction(){
         presenter.buttonPressedPresenter()
+        
     }
     
     
@@ -155,17 +149,9 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
             nameLabel.leadingAnchor.constraint(equalTo: nameView.leadingAnchor, constant: 10),
             nameLabel.centerYAnchor.constraint(equalTo: nameView.centerYAnchor),
 
-            
-            
-//            loginLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//
-//            passwordLabel.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 40),
-//            passwordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
             deleteButton.topAnchor.constraint(equalTo: commonView.bottomAnchor, constant: 40),
-            deleteButton.heightAnchor.constraint(equalToConstant: 30),
-            deleteButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -70),
+            deleteButton.heightAnchor.constraint(equalToConstant: 40),
+            deleteButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40),
             deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ].forEach({$0.isActive = true})
     }

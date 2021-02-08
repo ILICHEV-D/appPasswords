@@ -12,7 +12,7 @@ enum Localization {
     }
     
     enum Add {
-        static let sign = "Записать"
+        static let sign = "Создать"
         static let error = "Ошибка"
         static let errorDescription = "Заполните пустые поля"
         static let ok = "Хорошо"

@@ -42,11 +42,7 @@ class AddViewController: UIViewController, AddViewProtocol {
         presenter.viewDidLoad()
     }
     
-    
-    @IBAction func pressedButton(_ sender: UIButton) {
-        presenter.buttonPressedPresenter()
-    }
-    
+
     func configure(){
         commonStack.axis = .vertical
         commonStack.spacing = 15
@@ -58,7 +54,6 @@ class AddViewController: UIViewController, AddViewProtocol {
         [passwordFieldTitle, loginFieldTitle, iconFieldTitle].forEach({
             $0.font = .systemFont(ofSize: 15)
             $0.textColor = .black
-     //       $0.textColor = UIColor(red: 138/255, green: 138/255, blue: 142/255, alpha: 1)
         })
 
         [passwordField, loginField, iconField].forEach({
@@ -67,16 +62,20 @@ class AddViewController: UIViewController, AddViewProtocol {
             $0.backgroundColor = .systemGray5
             $0.layer.cornerRadius = 15})
         
-        cleanButton.backgroundColor = .systemBlue
+        cleanButton.backgroundColor = Styles.Color.appBaseColor
         cleanButton.setTitle(Localization.Add.sign, for: .normal)
         cleanButton.titleLabel?.textColor = .white
         cleanButton.layer.cornerRadius = 10
     }
     
+    
+    @IBAction func pressedButton(_ sender: UIButton) {
+        presenter.buttonPressedPresenter()
+    }
+    
     func addAll() {
         self.view.addSubview(commonStack)
         
-            
         for field in [(iconField, iconFieldTitle),  (loginField, loginFieldTitle), (passwordField, passwordFieldTitle)]{
             let stack = UIStackView()
             stack.axis = .vertical
@@ -90,12 +89,9 @@ class AddViewController: UIViewController, AddViewProtocol {
             stack.addArrangedSubview(field.0)
             commonStack.addArrangedSubview(stack)
             stack.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            
         }
         
         self.view.addSubview(cleanButton)
-
-        
         cleanButton.addTarget(self, action:#selector(self.pressedButton), for: .touchUpInside)
     }
 
@@ -104,23 +100,15 @@ class AddViewController: UIViewController, AddViewProtocol {
         commonStack.translatesAutoresizingMaskIntoConstraints = false
         cleanButton.translatesAutoresizingMaskIntoConstraints = false
 
-
-        
-        [
-            
-            
+        [    
             commonStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             commonStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50),
             commonStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-       //     commonStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-       //     commonStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-       //     commonStack.heightAnchor.constraint(equalToConstant: 150),
-            
+
             cleanButton.topAnchor.constraint(equalTo: commonStack.bottomAnchor, constant: 40),
             cleanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             cleanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             cleanButton.heightAnchor.constraint(equalToConstant: 30)
-
             
         ].forEach({$0.isActive = true})
         

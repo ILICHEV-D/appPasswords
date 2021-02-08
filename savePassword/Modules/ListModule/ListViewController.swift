@@ -30,6 +30,8 @@ class ListViewController: UIViewController, ListViewProtocol {
         presenter.updateList()
     }
     
+
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.collectionView.frame = CGRect(
@@ -40,6 +42,7 @@ class ListViewController: UIViewController, ListViewProtocol {
     }
     
 	override func viewDidLoad() {
+        self.tabBarController?.tabBar.change(color: Styles.Color.appBaseColor)
         super.viewDidLoad()
         self.definesPresentationContext = true //???
         presenter.view = self
@@ -47,26 +50,6 @@ class ListViewController: UIViewController, ListViewProtocol {
     }
     
 }
-
-//extension ListViewController: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return Common.listOfLoginAndPassword.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "cell")
-//        let password = Common.getPassword(number: indexPath.row, crypt: presenter.appDepedency!.cryptService as! Crypt)
-//
-//        var configurration = cell.defaultContentConfiguration()
-//        configurration.text = String(describing: Common.listOfLoginAndPassword[indexPath.row].login!)
-//        configurration.secondaryText = password
-//
-//        cell.contentConfiguration = configurration
-//
-//
-//        return cell
-//    }
-//}
 
 extension ListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,7 +60,6 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.layer.shadowRadius = 6
         cell.layer.shadowOpacity = 0.2
         cell.layer.shadowColor = UIColor.black.cgColor
-      //  cell.layer.shadowColor = UIColor.placeholderText.cgColor
 
         cell.layer.shadowOffset = CGSize(width: 3, height: 3)
 //        
@@ -92,14 +74,6 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
         presenter.goToShowScreen(numberOfRow: indexPath.row)
     }
 }
-
-
-//extension ListViewController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        presenter.goToShowScreen(numberOfRow: indexPath.row)
-//    }
-//}
 
 private extension ListViewController {
     func setupView() {

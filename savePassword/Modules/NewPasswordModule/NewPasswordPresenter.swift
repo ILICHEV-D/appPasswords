@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 
@@ -28,12 +27,12 @@ class NewPasswordPresenter: NewPasswordPresenterProtocol {
         view?.addAll()
         view?.configure()
         view?.setupConstraints()
-        titleTabBar()
+  //      titleTabBar()
     }
     
-    func titleTabBar(){
-        (self.view as! NewPasswordViewController).title = Localization.TabBar.password
-    }
+//    func titleTabBar(){
+//        (self.view as! NewPasswordViewController).title = Localization.TabBar.password
+//    }
     
     func goToAddScreen(name: String?){
         let addPresenter = AddPresenter()

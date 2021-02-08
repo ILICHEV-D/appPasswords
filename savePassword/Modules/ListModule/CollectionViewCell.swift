@@ -1,11 +1,6 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    
- //   var eventId: Int
- //   var height = CGFloat(75)
-
-
 
     fileprivate let name: UILabel = { () -> UILabel in
         let name = UILabel()
@@ -40,7 +35,6 @@ class CollectionViewCell: UICollectionViewCell {
     }()
     
     override init(frame: CGRect) {
-    //    self.eventId = 0
         super.init(frame: frame)
         
         contentView.addSubview(name)
@@ -48,8 +42,6 @@ class CollectionViewCell: UICollectionViewCell {
         contentView.addSubview(image)
         
         [
-      //      image.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-     //       image.bottomAnchor.constraint(equalTo: image.topAnchor, constant: height),
             image.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             image.heightAnchor.constraint(equalToConstant: 60),
@@ -80,13 +72,7 @@ class CollectionViewCell: UICollectionViewCell {
         image.image = UIImage(named: "icons/\(note.type ?? "tray")")
         name.text = note.type
         login.text = note.login
-        
-        
-//        eventId = model.id
 
         self.backgroundColor = .systemBackground
     }
-
-
-
 }

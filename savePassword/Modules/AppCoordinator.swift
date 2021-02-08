@@ -48,10 +48,9 @@ private extension AppCoordinator {
 
         listVC.tabBarItem =
             UITabBarItem(
-                title: "Список",
+                title: Localization.TabBar.password,
                 image: UIImage(systemName: "magnifyingglass"),
                 tag: 0)
-        
         navigationControllers.append(listNC)
     }
     
@@ -65,10 +64,9 @@ private extension AppCoordinator {
     
         newPasswordVC.tabBarItem =
            UITabBarItem(
-            title: "Добавление",
-            image: UIImage(systemName: "magnifyingglass"),
+            title: Localization.TabBar.add,
+            image: UIImage(systemName: "plus.circle"),
             tag: 1)
-        
         navigationControllers.append(newPasswordNC)
     }
     
@@ -81,10 +79,9 @@ private extension AppCoordinator {
         
         settingVC.tabBarItem =
            UITabBarItem(
-            title: "Настройки",
-            image: UIImage(systemName: "magnifyingglass"),
+            title: Localization.TabBar.setting,
+            image: UIImage(systemName: "text.justify"),
             tag: 2)
-        
         navigationControllers.append(settingNC)
     }
     

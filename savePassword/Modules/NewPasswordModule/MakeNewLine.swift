@@ -1,17 +1,11 @@
-//
-//  MakeNewLine.swift
-//  savePassword
-//
-//  Created by Danil Ilichev on 01.02.2021.
-//
-
 import Foundation
 import UIKit
+
+
 
 func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Icons]) -> UIStackView {
     let button = UIButton()
 
-    
      let labelMembersTitle = UILabel()
      let stackViewMembers = UIStackView() //название + скролл
      let stackListMembers = UIStackView() //внутренний стэк
@@ -21,7 +15,7 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     button.addTarget(self, action: #selector(self.pressedButton), for: .touchUpInside)
 
     
-    button.backgroundColor = .systemBlue
+    button.backgroundColor = Styles.Color.appBaseColor
     button.setTitle(Localization.Add.sign, for: .normal)
     button.titleLabel?.textColor = .white
     button.layer.cornerRadius = 10
@@ -33,26 +27,15 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     
     stackListMembers.axis = .horizontal
     stackListMembers.distribution = .fill
+    stackListMembers.alignment = .fill
     stackListMembers.spacing = 10
 
     stackViewMembers.axis = .vertical
-    stackListMembers.alignment = .fill
-    stackViewMembers.spacing = 0
+    stackViewMembers.spacing = 10
     
     scrollViewFriends.backgroundColor = UIColor.white
     scrollViewFriends.layer.cornerRadius = 15
-    
-    
-//    viewForScrollViewFriends.layer.cornerRadius = 15
-//    viewForScrollViewFriends.layer.shadowRadius = 10
-//    viewForScrollViewFriends.layer.shadowOpacity = 0.2
-//    viewForScrollViewFriends.layer.shadowColor = UIColor.black.cgColor
-//    viewForScrollViewFriends.layer.shadowOffset = CGSize(width: 3, height: 3)
 
-    
-            
-//    labelMembersTitle.font.withSize(50)
-  //  labelMembersTitle.attributedText = .bo
     labelMembersTitle.font = UIFont.boldSystemFont(ofSize: 28)
     labelMembersTitle.textColor = .black
     labelMembersTitle.text = name
@@ -102,12 +85,6 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
         let imageView = UIImageView()
  //       let name = UILabel()
         let button = UIButton()
-
-//        [viewPerson, imageView, name, button
-//            ].forEach({
-//                $0.translatesAutoresizingMaskIntoConstraints = false
-//            })
-        
         [viewPerson, imageView, button
             ].forEach({
                 $0.translatesAutoresizingMaskIntoConstraints = false
@@ -159,12 +136,8 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
         viewPerson.layer.shadowColor = UIColor.black.cgColor
         viewPerson.layer.shadowOffset = CGSize(width: 3, height: 3)
         
-        
         stackListMembers.addArrangedSubview(viewPerson)
-
-        
     }
-    print(stackViewMembers)
-    return stackViewMembers
 
+    return stackViewMembers
 }

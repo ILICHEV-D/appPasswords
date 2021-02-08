@@ -61,7 +61,7 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
         stackKey.axis = .vertical
         stackKey.alignment = .center
         
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = Styles.Color.appBaseColor
         button.setTitle(Localization.Setting.buttonChange, for: .normal)
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 10

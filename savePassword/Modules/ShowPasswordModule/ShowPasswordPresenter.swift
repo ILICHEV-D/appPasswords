@@ -50,7 +50,6 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
     }
     
     
-    
     func setUpLabels(){
         if let number = numberOfRow{
             (view as! ShowPasswordViewController).passwordLabel.text = Common.getPassword(number: number, crypt: appDepedency!.cryptService)
@@ -59,6 +58,5 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
         }
     
     }
-    
-    
+
 }

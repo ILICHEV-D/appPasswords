@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 @main
@@ -23,3 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+@available(iOS 13.0, *)
+    private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance) {
+        itemAppearance.normal.iconColor = .lightGray
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        
+        itemAppearance.selected.iconColor = .white
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
