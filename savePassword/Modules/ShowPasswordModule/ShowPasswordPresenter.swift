@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 
@@ -8,12 +7,11 @@ protocol ShowPasswordViewProtocol: class {
     func configure()
     func setupConstraints()
     func deleteButtonAction()
-
 }
 
 // MARK: Presenter -
 protocol ShowPasswordPresenterProtocol: class {
-	var view: ShowPasswordViewProtocol? { get set }
+    var view: ShowPasswordViewProtocol? { get set }
     var appDepedency: AppDependency? {get set}
     func viewDidLoad()
     var numberOfRow: Int? { get set}
@@ -26,9 +24,9 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
     
     var numberOfRow: Int?
     var appDepedency: AppDependency?
-
-
-
+    
+    
+    
     func viewDidLoad() {
         setUpLabels()
         view?.addAll()
@@ -37,14 +35,12 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
     }
     
     func buttonPressedPresenter(){
-        Common.listOfLoginAndPassword.remove(at: numberOfRow!)
+        appDepedency?.firestore.removeTask(Common.listOfLoginAndPassword[numberOfRow!])
         (self.view as! ShowPasswordViewController).dismiss(animated: true, completion: nil)
-
         let listNavigationControllers = ((self.view as! ShowPasswordViewController).presentingViewController as! UITabBarController).viewControllers?[0] as! UINavigationController
         let vc = listNavigationControllers.viewControllers[0] as! ListViewController
         
         DispatchQueue.global().async {
-            self.appDepedency?.cacheService.downloadDataToCash()
             vc.presenter.updateList()
         }
     }
@@ -56,7 +52,7 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
             (view as! ShowPasswordViewController).loginLabel.text = String(describing: Common.listOfLoginAndPassword[number].login!)
             (view as! ShowPasswordViewController).nameLabel.text = String(Common.listOfLoginAndPassword[number].type!)
         }
-    
+        
     }
-
+    
 }

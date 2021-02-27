@@ -1,51 +1,57 @@
-
 import UIKit
 
 class AddViewController: UIViewController, AddViewProtocol {
-
-
-	var presenter: AddPresenterProtocol
+    
+    var presenter: AddPresenterProtocol
     
     private let commonStack = UIStackView()
-
+    
     let innerStack = UIStackView()
     
+    let topView = UIView()
+    let topTitleOfCN = UILabel()
+    let imageOfIcon = UIImageView()
+    
     let iconFieldTitle = UILabel()
-    let iconField = UITextView()
-    let passwordField = UITextView()
+    let iconField = UITextField()
+    let passwordField = UITextField()
     let passwordFieldTitle = UILabel()
-    let loginField = UITextView()
+    let loginField = UITextField()
     let loginFieldTitle = UILabel()
     var cleanButton = UIButton()
-
-
-	init(presenter: AddPresenterProtocol, appDepedency: AppDependency) {
+    
+    
+    init(presenter: AddPresenterProtocol, appDepedency: AppDependency) {
         self.presenter = presenter
         self.presenter.appDepedency = appDepedency
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
         let view = UIView()
         self.view = view
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
-	override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         presenter.view = self
         presenter.viewDidLoad()
     }
     
-
+    
     func configure(){
+        
         commonStack.axis = .vertical
         commonStack.spacing = 15
+        
+        topTitleOfCN.textColor = .white
+        topTitleOfCN.font = UIFont.boldSystemFont(ofSize: 30)
         
         iconFieldTitle.text = Localization.Add.name
         loginFieldTitle.text = Localization.Add.login
@@ -53,18 +59,28 @@ class AddViewController: UIViewController, AddViewProtocol {
         
         [passwordFieldTitle, loginFieldTitle, iconFieldTitle].forEach({
             $0.font = .systemFont(ofSize: 15)
-            $0.textColor = .black
+            $0.textColor = .label
+            $0.numberOfLines = 1
+            $0.lineBreakMode = .byWordWrapping
+            
         })
-
+        
         [passwordField, loginField, iconField].forEach({
             $0.font = .systemFont(ofSize: 18)
-            $0.textColor = .black
+            $0.textColor = .label
             $0.backgroundColor = .systemGray5
-            $0.layer.cornerRadius = 15})
+            $0.layer.cornerRadius = 15
+            $0.indent(size: 10)
+        })
+        
+        
+        var frameRect = passwordField.frame;
+        frameRect.size.height = 100; // <-- Specify the height you want here.
+        passwordField.frame = frameRect;
         
         cleanButton.backgroundColor = Styles.Color.appBaseColor
         cleanButton.setTitle(Localization.Add.sign, for: .normal)
-        cleanButton.titleLabel?.textColor = .white
+        cleanButton.titleLabel?.textColor = .systemBackground
         cleanButton.layer.cornerRadius = 10
     }
     
@@ -74,9 +90,20 @@ class AddViewController: UIViewController, AddViewProtocol {
     }
     
     func addAll() {
+        self.view.addSubview(topView)
         self.view.addSubview(commonStack)
         
-        for field in [(iconField, iconFieldTitle),  (loginField, loginFieldTitle), (passwordField, passwordFieldTitle)]{
+        //     topView.addSubview(imageOfIcon)
+        topView.addSubview(topTitleOfCN)
+        
+        var stackOfField: [(UITextField, UILabel)] = []
+        if presenter.name == nil {
+            stackOfField = [(iconField, iconFieldTitle),  (loginField, loginFieldTitle), (passwordField, passwordFieldTitle)]
+        }
+        else {
+            stackOfField = [(loginField, loginFieldTitle), (passwordField, passwordFieldTitle)]
+        }
+        for field in stackOfField {
             let stack = UIStackView()
             stack.axis = .vertical
             stack.spacing = 5
@@ -94,17 +121,34 @@ class AddViewController: UIViewController, AddViewProtocol {
         self.view.addSubview(cleanButton)
         cleanButton.addTarget(self, action:#selector(self.pressedButton), for: .touchUpInside)
     }
-
+    
     
     func setupConstraints() {
         commonStack.translatesAutoresizingMaskIntoConstraints = false
         cleanButton.translatesAutoresizingMaskIntoConstraints = false
-
-        [    
-            commonStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        loginField.translatesAutoresizingMaskIntoConstraints = false
+        iconField.translatesAutoresizingMaskIntoConstraints = false
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        topTitleOfCN.translatesAutoresizingMaskIntoConstraints = false
+        
+        [
+            topView.topAnchor.constraint(equalTo: view.topAnchor),
+            topView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            topView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            topView.heightAnchor.constraint(equalToConstant: 100),
+            
+            topTitleOfCN.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
+            topTitleOfCN.leftAnchor.constraint(equalTo: topView.leftAnchor, constant: 25),
+            
+            passwordField.heightAnchor.constraint(equalToConstant: 35),
+            loginField.heightAnchor.constraint(equalToConstant: 35),
+            iconField.heightAnchor.constraint(equalToConstant: 35),
+            
+            commonStack.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 25),
             commonStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50),
             commonStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
+            
             cleanButton.topAnchor.constraint(equalTo: commonStack.bottomAnchor, constant: 40),
             cleanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             cleanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
@@ -113,6 +157,6 @@ class AddViewController: UIViewController, AddViewProtocol {
         ].forEach({$0.isActive = true})
         
     }
-
+    
 }
 

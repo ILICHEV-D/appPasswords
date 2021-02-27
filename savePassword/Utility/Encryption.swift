@@ -78,7 +78,7 @@ class Crypt: CryptProtocol {
             let second2 = shift(key[Int((sum >> 11) & 3)], new0)
             new1 &+= first2 &+ (new0 ^ sum) &+ second2
         }
-
+        
         value[0] = new0 ^ key[2]
         value[1] = new1 ^ key[3]
         

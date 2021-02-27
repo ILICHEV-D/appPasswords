@@ -1,7 +1,7 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-
+    
     fileprivate let name: UILabel = { () -> UILabel in
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
@@ -12,8 +12,8 @@ class CollectionViewCell: UICollectionViewCell {
         return name
     }()
     
-
-
+    
+    
     fileprivate let login: UILabel = { () -> UILabel in
         let login = UILabel()
         login.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class CollectionViewCell: UICollectionViewCell {
         login.numberOfLines = 0
         return login
     }()
-
+    
     fileprivate let image: UIImageView = { ( ) -> UIImageView in
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         image.contentMode = UIView.ContentMode.scaleAspectFill
@@ -46,13 +46,12 @@ class CollectionViewCell: UICollectionViewCell {
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             image.heightAnchor.constraint(equalToConstant: 60),
             image.widthAnchor.constraint(equalToConstant: 60),
-
             
             name.topAnchor.constraint(equalTo: self.topAnchor, constant: 25),
             name.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
             name.heightAnchor.constraint(equalToConstant: 14),
             name.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-
+            
             login.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 8),
             login.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
             login.heightAnchor.constraint(equalToConstant: 16),
@@ -68,11 +67,16 @@ class CollectionViewCell: UICollectionViewCell {
     
     func configure(collectionView: UICollectionView, index: Int) {
         let note = Common.listOfLoginAndPassword[index]
+        let index = Common.listOfIcons.firstIndex(where: {$0.name == note.type})
         
-        image.image = UIImage(named: "icons/\(note.type ?? "tray")")
-        name.text = note.type
+        if let index = index {
+            image.image = UIImage(named: "icons/\(Common.listOfIcons[index].name)" )
+        }
+        else {
+            image.image = UIImage(named: "sign1")
+        }
+        name.text = note.type?.firstUppercased
         login.text = note.login
-
         self.backgroundColor = .systemBackground
     }
 }

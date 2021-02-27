@@ -1,8 +1,8 @@
 import UIKit
 
 class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
-
-	var presenter: ChangeKeyPresenterProtocol
+    
+    var presenter: ChangeKeyPresenterProtocol
     
     var keyLabel = UILabel()
     var keyDescriptionLabel = UILabel()
@@ -12,15 +12,15 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
     var keyField4 = UITextField()
     var stackKey = UIStackView()
     var button = UIButton()
-
-
-	init(presenter: ChangeKeyPresenterProtocol, appDepedency: AppDependency) {
+    
+    
+    init(presenter: ChangeKeyPresenterProtocol, appDepedency: AppDependency) {
         self.presenter = presenter
         self.presenter.appDepedency = appDepedency
         super.init(nibName: nil, bundle: nil)
     }
     
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,10 +31,10 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
         
         view.backgroundColor = .systemBackground
     }
-
-	override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         presenter.view = self
         presenter.viewDidLoad()
     }
@@ -67,25 +67,26 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
         button.layer.cornerRadius = 10
         
         [keyField1, keyField2, keyField3, keyField4
-
+         
         ].forEach({
             $0.layer.cornerRadius = 10
             $0.keyboardType = .numberPad
             $0.backgroundColor = .systemGray5
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.textColor = .label
-            $0.font = UIFont.boldSystemFont(ofSize: 25)
+            $0.font = UIFont.boldSystemFont(ofSize: 23)
             $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
             $0.widthAnchor.constraint(equalToConstant: 180).isActive = true
+            $0.indent(size: 8)
             stackKey.addArrangedSubview($0)
         })
-
+        
         
         button.addTarget(self, action: #selector(self.pressedButton), for: .touchUpInside)
     }
     
-        
-
+    
+    
     
     func addAll(){
         view.addSubview(keyLabel)
@@ -99,11 +100,8 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
         keyLabel.translatesAutoresizingMaskIntoConstraints = false
         keyDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         stackKey.translatesAutoresizingMaskIntoConstraints = false
-//        keyField1.translatesAutoresizingMaskIntoConstraints = false
-//        keyField2.translatesAutoresizingMaskIntoConstraints = false
-//        keyField3.translatesAutoresizingMaskIntoConstraints = false
-//        keyField4.translatesAutoresizingMaskIntoConstraints = false
-
+        
+        
         [
             keyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             keyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -113,15 +111,15 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
             keyDescriptionLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -40),
             
             stackKey.topAnchor.constraint(equalTo: keyDescriptionLabel.bottomAnchor, constant: 30),
-            stackKey.widthAnchor.constraint(equalToConstant: 165),
+            stackKey.widthAnchor.constraint(equalToConstant: 180),
             stackKey.heightAnchor.constraint(equalToConstant: 205),
             stackKey.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             button.topAnchor.constraint(equalTo: stackKey.bottomAnchor, constant: 30),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -60)
-  
+            
         ].forEach({$0.isActive = true})
-
+        
     }
 }

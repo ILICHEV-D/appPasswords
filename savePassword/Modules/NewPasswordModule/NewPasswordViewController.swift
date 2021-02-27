@@ -1,4 +1,3 @@
-
 import UIKit
 
 class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
@@ -22,6 +21,7 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
     override func loadView() {
         let view = UIView()
         self.view = view
+        view.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -35,12 +35,12 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
     func configure(){
         scrollView.alwaysBounceVertical = true
         commonStack.axis = .vertical
-        view.backgroundColor = .white
         button.backgroundColor = Styles.Color.appBaseColor
         button.setTitle(Localization.Add.sign, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.titleLabel?.textColor = .white
+        button.titleLabel?.textColor = .label
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(self.pressedButton), for: .touchUpInside)
         commonStack.spacing = 20
         scrollView.showsVerticalScrollIndicator = false
 
@@ -65,7 +65,7 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
     func addAll(){
         self.view.addSubview(scrollView)
         scrollView.addSubview(commonStack)
-        view.addSubview(button)
+        scrollView.addSubview(button)
     }
     
     func setupConstraints() {
@@ -82,13 +82,13 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
             commonStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
             commonStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             commonStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            commonStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             commonStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30),
 
             button.topAnchor.constraint(equalTo: commonStack.bottomAnchor, constant: 30),
             button.heightAnchor.constraint(equalToConstant: 40),
             button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)
+            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            button.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
         ].forEach({$0.isActive = true})
         

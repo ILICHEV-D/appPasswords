@@ -1,17 +1,19 @@
 import Foundation
 import UIKit
+import Combine
+import Firebase
 
 // MARK: View -
 protocol AddViewProtocol: class {
     func addAll()
     func setupConstraints()
     func configure()
-
+    
 }
 
 // MARK: Presenter -
 protocol AddPresenterProtocol: class {
-	var view: AddViewProtocol? { get set }
+    var view: AddViewProtocol? { get set }
     var appDepedency: AppDependency? {get set}
     var name: String? { get }
     func viewDidLoad()
@@ -23,8 +25,8 @@ class AddPresenter: AddPresenterProtocol {
     weak var view: AddViewProtocol?
     var appDepedency: AppDependency?
     var name: String?
-
-
+    
+    
     func viewDidLoad() {
         view?.addAll()
         view?.setupConstraints()
@@ -44,9 +46,10 @@ class AddPresenter: AddPresenterProtocol {
             return
         }
         
+        let item = Common.addLoginAndPassword(login: login, password: password, icon: name ?? icon, crypt: appDepedency!.cryptService)
         
-        Common.addLoginAndPassword(login: login, password: password, icon: name ?? icon, crypt: appDepedency!.cryptService )
-        print(Common.listOfLoginAndPassword)
+        appDepedency?.firestore.addTask(item)
+        
         (self.view as! AddViewController).loginField.text = ""
         (self.view as! AddViewController).passwordField.text = ""
         (self.view as! AddViewController).iconField.text = ""
@@ -58,9 +61,8 @@ class AddPresenter: AddPresenterProtocol {
         
         let listNavigationControllers = ((self.view as! AddViewController).presentingViewController as! UITabBarController).viewControllers?[0] as! UINavigationController
         let vc = listNavigationControllers.viewControllers[0] as! ListViewController
-
+        
         DispatchQueue.global().async {
-            self.appDepedency?.cacheService.downloadDataToCash()
             vc.presenter.updateList()
         }
     }

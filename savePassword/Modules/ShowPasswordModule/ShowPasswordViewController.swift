@@ -1,8 +1,8 @@
 import UIKit
 
 class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
-
-	var presenter: ShowPasswordPresenterProtocol
+    
+    var presenter: ShowPasswordPresenterProtocol
     
     var commonView = UIView()
     var nameView = UIView()
@@ -10,21 +10,21 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
     var loginLabel = UILabel()
     var passwordLabel = UILabel()
     var deleteButton = UIButton()
-
+    
     init(presenter: ShowPasswordPresenterProtocol, numberOfRow: Int, appDepedency: AppDependency) {
         self.presenter = presenter
         self.presenter.appDepedency = appDepedency
         self.presenter.numberOfRow = numberOfRow
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-	override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         presenter.view = self
         presenter.viewDidLoad()
     }
@@ -33,13 +33,12 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
         let view = UIView()
         self.view = view
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     func addAll(){
         view.addSubview(commonView)
         commonView.addSubview(nameView)
-        
         nameView.addSubview(nameLabel)
         
         var previous: UIView?
@@ -59,7 +58,7 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
             label.font = UIFont.boldSystemFont(ofSize: 22)
             description.textColor = .secondaryLabel
             description.font = UIFont.boldSystemFont(ofSize: 18)
-
+            
             
             viewForLP.translatesAutoresizingMaskIntoConstraints = false
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -99,14 +98,15 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
             nameView.backgroundColor = Common.listOfIcons[index].color
         }
         else {
-            nameView.backgroundColor = UIColor.systemGray5
+            nameView.backgroundColor = Styles.Color.appBaseColor
         }
         
+        nameLabel.text = nameLabel.text?.firstUppercased
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 24)
         
-        commonView.backgroundColor = UIColor.white
-
+        commonView.backgroundColor = .systemBackground
+        
         nameView.layer.cornerRadius = 20
         commonView.layer.cornerRadius = 20
         commonView.layer.shadowRadius = 15
@@ -148,7 +148,7 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
             
             nameLabel.leadingAnchor.constraint(equalTo: nameView.leadingAnchor, constant: 10),
             nameLabel.centerYAnchor.constraint(equalTo: nameView.centerYAnchor),
-
+            
             deleteButton.topAnchor.constraint(equalTo: commonView.bottomAnchor, constant: 40),
             deleteButton.heightAnchor.constraint(equalToConstant: 40),
             deleteButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40),
@@ -156,8 +156,8 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
         ].forEach({$0.isActive = true})
     }
     
-
-
+    
+    
 }
 
 

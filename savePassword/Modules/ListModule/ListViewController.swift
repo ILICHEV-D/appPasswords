@@ -1,36 +1,33 @@
 import UIKit
 
 class ListViewController: UIViewController, ListViewProtocol {
-
-	var presenter: ListPresenterProtocol
     
-  //  let tableView = UITableView(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-
+    var presenter: ListPresenterProtocol
+    
     let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), collectionViewLayout: CollectionViewFlowLayout())
-
-
+    
+    
     init(presenter: ListPresenterProtocol, appDepedency: AppDependency) {
         self.presenter = presenter
         self.presenter.appDepedency = appDepedency
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
         let view = UIView()
         collectionView.alwaysBounceVertical = true
         view.addSubview(collectionView)
         setupView()
         self.view = view
-        
         self.navigationController?.navigationBar.prefersLargeTitles = true
         presenter.updateList()
     }
     
-
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -41,7 +38,7 @@ class ListViewController: UIViewController, ListViewProtocol {
             height: self.view.frame.height)
     }
     
-	override func viewDidLoad() {
+    override func viewDidLoad() {
         self.tabBarController?.tabBar.change(color: Styles.Color.appBaseColor)
         super.viewDidLoad()
         self.definesPresentationContext = true //???
@@ -60,9 +57,8 @@ extension ListViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.layer.shadowRadius = 6
         cell.layer.shadowOpacity = 0.2
         cell.layer.shadowColor = UIColor.black.cgColor
-
         cell.layer.shadowOffset = CGSize(width: 3, height: 3)
-//        
+        
         return cell
     }
     

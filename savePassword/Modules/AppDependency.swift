@@ -9,29 +9,40 @@ protocol HasCryptSevice {       //прописываем протокол, ко�
     func articlesCryptSevice() -> CryptProtocol
 }
 
+protocol HasFirebaseSercvice {
+    func getFirestore() -> TaskRepository
+}
+
 class AppDependency {
     let cacheService: CacheProtocol
     let cryptService: CryptProtocol
-
-    init(cacheService: CacheProtocol, cryptCarvice: CryptProtocol) {
+    let firestore: TaskRepository
+    
+    init(cacheService: CacheProtocol, cryptCarvice: CryptProtocol, firestore: TaskRepository) {
         self.cacheService = cacheService
         self.cryptService = cryptCarvice
+        self.firestore = firestore
     }
     
     static func makeDefault() -> AppDependency {
         let cacheService = CacheService()
         let cryptService = Crypt()
-        return AppDependency(cacheService: cacheService, cryptCarvice: cryptService)
+        let firestore = FirestoreTaskRepository()
+        return AppDependency(cacheService: cacheService, cryptCarvice: cryptService, firestore: firestore)
     }
-
+    
 }
 
-extension AppDependency: HasCacheSevice, HasCryptSevice {
+extension AppDependency: HasCacheSevice, HasCryptSevice, HasFirebaseSercvice {
     func articlesCryptSevice() -> CryptProtocol {
         return self.cryptService
     }
     
     func articlesCacheService() -> CacheProtocol {     //расписываем функцию, для соблюдения протокола
         return self.cacheService
+    }
+    
+    func getFirestore() -> TaskRepository {
+        return self.firestore
     }
 }

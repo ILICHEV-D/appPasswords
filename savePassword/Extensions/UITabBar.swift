@@ -14,8 +14,6 @@ extension UITabBar {
 
 @available(iOS 13.0, *)
 private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance, _ color: UIColor) {
- //   itemAppearance.normal.iconColor = Styles.Color.appBaseColor
- //   itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Styles.Color.appBaseColor]
     itemAppearance.selected.iconColor = Styles.Color.appBaseColor
     itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Styles.Color.appBaseColor]
 }

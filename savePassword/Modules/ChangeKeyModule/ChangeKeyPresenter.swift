@@ -10,18 +10,18 @@ protocol ChangeKeyViewProtocol: class {
 
 // MARK: Presenter -
 protocol ChangeKeyPresenterProtocol: class {
-	var view: ChangeKeyViewProtocol? { get set }
+    var view: ChangeKeyViewProtocol? { get set }
     var appDepedency: AppDependency? { get set }
     func viewDidLoad()
     func changeKey()
 }
 
 class ChangeKeyPresenter: ChangeKeyPresenterProtocol {
-
+    
     weak var view: ChangeKeyViewProtocol?
     var appDepedency: AppDependency?
-
-
+    
+    
     func viewDidLoad() {
         view?.addAll()
         view?.setupConstraints()
@@ -37,7 +37,7 @@ class ChangeKeyPresenter: ChangeKeyPresenterProtocol {
         let alertController = UIAlertController(title: Localization.Setting.Alert.error, message: Localization.Setting.Alert.messageEmpty, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
- 
+        
         if key1.isEmpty || key2.isEmpty || key3.isEmpty || key4.isEmpty{
             (self.view as! ChangeKeyViewController).present(alertController, animated: true, completion: nil)
             return
@@ -48,10 +48,10 @@ class ChangeKeyPresenter: ChangeKeyPresenterProtocol {
             return
         }
         
-    
+        
         let key: [UInt32] = [UInt32(Int(key1)!), UInt32(Int(key2)!), UInt32(Int(key3)!), UInt32(Int(key4)!)]
         
-
+        
         appDepedency?.cryptService.changeKey(arrayKey: key)
         
         reloadScreens()

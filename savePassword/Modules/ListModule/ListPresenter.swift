@@ -29,13 +29,13 @@ class ListPresenter: ListPresenterProtocol {
     }
 
     func updateList(){
-        DispatchQueue.global().async {
-            self.appDepedency?.cacheService.getDataFromCash()
-            DispatchQueue.main.sync {
+            let group = DispatchGroup()
+            group.enter()
+            self.appDepedency?.firestore.loadData()
+            group.leave()
+            group.notify(queue: .main){
                 (self.view as! ListViewController).collectionView.reloadData()
             }
-            print("Успешно обновлен экран")
-        }
     }
     
     func goToShowScreen(numberOfRow: Int){

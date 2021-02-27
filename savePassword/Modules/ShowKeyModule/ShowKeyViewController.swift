@@ -1,22 +1,22 @@
 import UIKit
 
 class ShowKeyViewController: UIViewController, ShowKeyViewProtocol {
-
-	var presenter: ShowKeyPresenterProtocol
+    
+    var presenter: ShowKeyPresenterProtocol
     
     var keyLabel = UILabel()
     var keyDescriptionLabel = UILabel()
     var stackKey = UIStackView()
     
-
-
-
+    
+    
+    
     init(presenter: ShowKeyPresenterProtocol, appDepedency: AppDependency) {
         self.presenter = presenter
         self.presenter.appDepedency = appDepedency
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,10 +27,10 @@ class ShowKeyViewController: UIViewController, ShowKeyViewProtocol {
         
         view.backgroundColor = .systemBackground
     }
-
-	override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         presenter.view = self
         presenter.viewDidLoad()
     }
@@ -58,7 +58,7 @@ class ShowKeyViewController: UIViewController, ShowKeyViewProtocol {
         view.addSubview(keyLabel)
         view.addSubview(keyDescriptionLabel)
         view.addSubview(stackKey)
-
+        
         let key = presenter.appDepedency?.cryptService.getKey()
         
         
@@ -72,7 +72,7 @@ class ShowKeyViewController: UIViewController, ShowKeyViewProtocol {
             stackKey.addArrangedSubview(keyLable)
         }
     }
-
+    
     func setupConstraints(){
         keyLabel.translatesAutoresizingMaskIntoConstraints = false
         keyDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -90,10 +90,10 @@ class ShowKeyViewController: UIViewController, ShowKeyViewProtocol {
             stackKey.widthAnchor.constraint(equalToConstant: 150),
             stackKey.heightAnchor.constraint(equalToConstant: 120),
             stackKey.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
+            
             
         ].forEach({$0.isActive = true})
-
+        
     }
-
+    
 }
