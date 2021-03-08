@@ -2,6 +2,7 @@ import UIKit
 import Firebase
 import SwiftUI
 import SwiftKeychainWrapper
+import IQKeyboardManagerSwift
 
 
 @main
@@ -14,11 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
+        IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
         
         var appDepedency: AppDependency = AppDependency.makeDefault()
-        appDepedency.firestore.loadData()
+        
+        
+
+
+
+
+
+
+
+  //      appDepedency.firestore.loadData()
+        
+     //   appDepedency.firestore.loadData(completion: () -> Void)
         print(Common.listOfLoginAndPassword)
 
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -48,8 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DispatchQueue.global().async {
                 vc.presenter.updateList()
             }
+            
         }
-
+        
+  //      let welcomeVC = UIHostingController(rootView: WelcomeView())
+  //            window.rootViewController?.present(welcomeVC, animated: true, completion: nil)
         self.appWindow = window
         return true
     }

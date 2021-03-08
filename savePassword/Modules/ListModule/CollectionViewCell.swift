@@ -47,14 +47,14 @@ class CollectionViewCell: UICollectionViewCell {
             image.heightAnchor.constraint(equalToConstant: 60),
             image.widthAnchor.constraint(equalToConstant: 60),
             
-            name.topAnchor.constraint(equalTo: self.topAnchor, constant: 25),
+            name.topAnchor.constraint(equalTo: image.topAnchor, constant: 11),
             name.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
-            name.heightAnchor.constraint(equalToConstant: 14),
+            name.heightAnchor.constraint(equalToConstant: 15),
             name.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             
-            login.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 8),
+            login.bottomAnchor.constraint(equalTo: image.bottomAnchor, constant: -11),
             login.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
-            login.heightAnchor.constraint(equalToConstant: 16),
+            login.heightAnchor.constraint(equalToConstant: 18),
             login.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
         ].forEach({$0.isActive = true})
         
@@ -65,8 +65,8 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configure(collectionView: UICollectionView, index: Int) {
-        let note = Common.listOfLoginAndPassword[index]
+    func configure(collectionView: UICollectionView, index: Int, listOfLogins: [LoginAndPassword]) {
+        let note = listOfLogins[index]
         let index = Common.listOfIcons.firstIndex(where: {$0.name == note.type})
         
         if let index = index {
@@ -77,6 +77,6 @@ class CollectionViewCell: UICollectionViewCell {
         }
         name.text = note.type?.firstUppercased
         login.text = note.login
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = UIColor(named: "color1")
     }
 }

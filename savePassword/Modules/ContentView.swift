@@ -21,29 +21,29 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Image("sign")
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .padding(.horizontal, 100)
-                  .padding(.top, 0)
+                    .frame(width: 100, height: 100, alignment: .center)
+//                  .resizable()
+//                  .aspectRatio(contentMode: .fit)
+//                  .padding(.horizontal, 120)
+//                  .padding(.top, 0)
                   .padding(.bottom, 100)
                 
+                Spacer()
+
                 
-                HStack {
-                  Text("Welcome to")
+                Text(NSLocalizedString(Localization.Welcome.welcome, comment: ""))
                     .font(.title)
-                  
-                  Text("savePassword")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                }
+                    .fontWeight(.bold)
+                    .padding(.bottom, 20)
+
+
                 
-                Text("Create an account to save your tasks and access them anywhere. It's free. \n Forever.")
+                Text(NSLocalizedString(Localization.Welcome.welcomeDescription, comment: ""))
                   .font(.headline)
                   .fontWeight(.medium)
                   .multilineTextAlignment(.center)
-                  .padding(.top, 20)
+             //     .padding(.bottom, 20)
                 
-                Spacer()
                 
                 
                 Text(text)
@@ -56,8 +56,6 @@ struct ContentView: View {
                                     self.text = "Successfully logged into Firebase with Sign in with Apple\n\nuser.id: \(user.uid)\nuser.email: \(email)\nauth: \(auth)"
                                     KeychainWrapper.standard.set(user.uid, forKey: "uid", withAccessibility: .alwaysThisDeviceOnly, isSynchronizable: false)
                                     NotificationCenter.default.post(name: NSNotification.Name("dismissSwiftUI"), object: nil)
-                                    
-
                                 }
                             }
                         }

@@ -1,40 +1,71 @@
 import Foundation
 
+//enum ChoicesTitle: String {
+//    case choice1 = "Choice 1"
+//    case choice2 = "Choice 2"
+//    case choice3 = "Choice 3"
+//
+//    func localizedString() -> String {
+//        return NSLocalizedString(self.rawValue, comment: "")
+//    }
+//
+//    static func getTitleFor(title:ChoicesTitle) -> String {
+//        print(title)
+//        print(title.localizedString())
+//        return title.localizedString()
+//    }
+//}
+
+
 enum Localization {
+
+    
     enum TabBar {
-        static let password = "Пароли"
-        static let add = "Добавить"
-        static let setting = "Настройки"
+        static let password = "Passwords"
+        static let add = "Add"
+        static let setting = "Setting"
     }
     
     enum Password {
-        static let buttonDelete = "Удалить"
+        static let buttonDelete = "Delete"
     }
     
     enum Add {
-        static let sign = "Создать"
-        static let error = "Ошибка"
-        static let errorDescription = "Заполните пустые поля"
-        static let ok = "Хорошо"
-        static let login = "Логин"
-        static let password = "Пароль"
-        static let name = "Название"
-        static let newPassword = "Новый пароль"
+        static let create = "Create"
+        static let error = "Error"
+        static let errorDescription = "ErrorDescription"
+        static let ok = "Ok"
+        static let login = "Login"
+        static let password = "Password"
+        static let name = "Name"
+        static let newPassword = "NewPassword"
     }
     
     enum Setting {
-        static let showKey = "Показать ключ"
-        static let changeKey = "Изменить ключ"
-        static let exit = "Выход"
-        static let key = "Ключи шифрования"
-        static let keyDescriotion = "Если вы потеряете телефон, то при повторной авторизации ваш ключ будет сброшен. Восстановить доступ к паролям вы сможете только введя данные ключи на новом устройстве. Храните их в надежном месте."
-        static let changeKeyDescriotion = "Менять ключи стоит только в случае авторизации с нового устройства. Если данным ключом возпроизводилось шифрование паролей, то обзяательно запишите ключ. Будьте внимательны."
-        static let buttonChange = "Изменить"
+        static let showKey = "ShowKey"
+        static let changeKey = "ChangeKey"
+        static let exit = "Exit"
+        static let key = "Key"
+        static let keyDescription = "KeyDescription"
+        static let changeKeyDescription = "ChangeKeyDescription"
+        static let buttonChange = "ButtonChange"
         
         enum Alert {
-            static let error = "Ошибка"
-            static let messageEmpty = "Вы оставили пустые поля или ввели слишком большое число"
+            static let error = "Error"
+            static let messageEmpty = "MessageEmpty"
         }
+    }
+    
+    enum Types {
+        static let socialNetwork = "SocialNetwork"
+        static let travelling = "Travelling"
+        static let gamesEntertainments = "GamesEntertainments"
 
     }
+    
+    enum Welcome {
+        static let welcomeDescription = "WelcomeDescription"
+        static let welcome = "Welcome"
+    }
 }
+

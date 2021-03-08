@@ -3,7 +3,7 @@ import UIKit
 class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
     
     var presenter: ShowPasswordPresenterProtocol
-    
+        
     var commonView = UIView()
     var nameView = UIView()
     var nameLabel = UILabel()
@@ -43,7 +43,7 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
         
         var previous: UIView?
         
-        for i in [(loginLabel, Localization.Add.login), (passwordLabel, Localization.Add.password)]{
+        for i in [(loginLabel, NSLocalizedString(Localization.Add.login, comment: "")), (passwordLabel, NSLocalizedString(Localization.Add.password, comment: ""))]{
             let viewForLP = UIView()
             let label = i.0
             let description = UILabel()
@@ -91,7 +91,6 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
     }
     
     func configure(){
-        
         nameView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         let index = Common.listOfIcons.firstIndex(where: {$0.name == nameLabel.text})
         if let index = index {
@@ -114,7 +113,8 @@ class ShowPasswordViewController: UIViewController, ShowPasswordViewProtocol {
         commonView.layer.shadowColor = UIColor.black.cgColor
         commonView.layer.shadowOffset = CGSize(width: 3, height: 3)
         
-        deleteButton.setTitle(Localization.Password.buttonDelete, for: .normal)
+        
+        deleteButton.setTitle(NSLocalizedString(Localization.Password.buttonDelete, comment: ""), for: .normal)
         deleteButton.backgroundColor = Styles.Color.appBaseColor
         deleteButton.titleLabel?.textColor = .white
         deleteButton.layer.cornerRadius = 15

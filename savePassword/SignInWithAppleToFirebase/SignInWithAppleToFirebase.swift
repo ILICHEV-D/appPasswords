@@ -4,6 +4,7 @@ import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import SwiftKeychainWrapper
+import Firebase
 
 
 final class SignInWithApple: UIViewRepresentable {
@@ -155,10 +156,17 @@ extension SignInWithAppleDelegates: ASAuthorizationControllerDelegate {
     }
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         firebaseLogin(credential: credential)
+//        
+//        let fire = FirestoreTaskRepository()
+//        fire.loadData()
+//        print("4")
     }
 
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
         self.firebaseLogin(credential: credential)
+//        let fire = FirestoreTaskRepository()
+//        fire.loadData()
+//        print("5")
     }
 
 

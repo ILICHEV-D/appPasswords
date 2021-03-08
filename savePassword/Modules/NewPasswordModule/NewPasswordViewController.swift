@@ -7,6 +7,7 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
     private var button = UIButton()
     private let commonStack = UIStackView()
     private let scrollView = UIScrollView()
+    private let contentView = UIView()
 
 	init(presenter: NewPasswordPresenterProtocol, appDepedency: AppDependency) {
         self.presenter = presenter
@@ -36,7 +37,7 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
         scrollView.alwaysBounceVertical = true
         commonStack.axis = .vertical
         button.backgroundColor = Styles.Color.appBaseColor
-        button.setTitle(Localization.Add.sign, for: .normal)
+        button.setTitle(NSLocalizedString(Localization.Add.create, comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.titleLabel?.textColor = .label
         button.layer.cornerRadius = 15
@@ -64,11 +65,13 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
     
     func addAll(){
         self.view.addSubview(scrollView)
-        scrollView.addSubview(commonStack)
-        scrollView.addSubview(button)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(commonStack)
+        contentView.addSubview(button)
     }
     
     func setupConstraints() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         commonStack.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +82,15 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            commonStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
+
+            
+            commonStack.topAnchor.constraint(equalTo: contentView.topAnchor),
             commonStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             commonStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             commonStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30),
@@ -88,7 +99,7 @@ class NewPasswordViewController: UIViewController, NewPasswordViewProtocol {
             button.heightAnchor.constraint(equalToConstant: 40),
             button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            button.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      //      button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
         ].forEach({$0.isActive = true})
         

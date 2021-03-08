@@ -5,24 +5,33 @@ import Firebase
 import SwiftKeychainWrapper
 
 protocol TaskRepository {
-    func addTask(_ task: LoginAndPassword)
-    func removeTask(_ task: LoginAndPassword)
+    func addTask(_ task: LoginAndPassword, completion: @escaping () -> Void)
+    func removeTask(_ task: LoginAndPassword, completion: @escaping () -> Void)
     //  func updateTask(_ task: LoginAndPassword)
-    func loadData()
+    func loadData(completion: @escaping () -> Void)
+ //   func loadData(beginHandler: @escaping () -> (), completionHandler: @escaping () -> ())
+ //   func loadData()
 }
 
 
 class FirestoreTaskRepository: TaskRepository {
+
+    
     var db = Firestore.firestore() // (1)
     
     
     
-    func loadData() {
+    func loadData (completion: @escaping () -> Void = {}) {
+ //   func loadData () {
+ //   func loadData(beginHandler: @escaping () -> (), completionHandler: @escaping () -> ()){
+        
         db.collection(KeychainWrapper.standard.string(forKey: "uid") ?? "0").order(by: "createdTime").addSnapshotListener { (querySnapshot, error) in // (2)
             if let querySnapshot = querySnapshot {
-                Common.listOfLoginAndPassword = querySnapshot.documents.compactMap { document -> LoginAndPassword? in // !!!!!
+                Common.listOfLoginAndPassword = querySnapshot.documents.compactMap { document -> LoginAndPassword?
+                    in // !!!!!
                     try? document.data(as: LoginAndPassword.self)
                 }
+                completion()
             }
         }
     }
@@ -32,7 +41,7 @@ class FirestoreTaskRepository: TaskRepository {
     //        if let e = error{
     
     
-    func addTask(_ task: LoginAndPassword) {
+    func addTask(_ task: LoginAndPassword, completion: @escaping () -> Void = {}) {
         do {
             let _ = try db.collection(KeychainWrapper.standard.string(forKey: "uid")!).addDocument(from: task)
             //    let _ = try db.collection("tasks").addDocument(from: task)
@@ -40,6 +49,7 @@ class FirestoreTaskRepository: TaskRepository {
         catch {
             print("There was an error while trying to save a task \(error.localizedDescription).")
         }
+        completion()
     }
     
     //
@@ -56,7 +66,7 @@ class FirestoreTaskRepository: TaskRepository {
     //      }
     //    }
     
-    func removeTask(_ task: LoginAndPassword) {
+    func removeTask(_ task: LoginAndPassword, completion: @escaping () -> Void = {}) {
         if let taskID = task.id {
             db.collection(KeychainWrapper.standard.string(forKey: "uid")!).document(taskID).delete { (error) in // (1)
                 if let error = error {
@@ -64,5 +74,6 @@ class FirestoreTaskRepository: TaskRepository {
                 }
             }
         }
+        completion()
     }
 }

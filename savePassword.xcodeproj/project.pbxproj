@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		690965D125EC2FA0002E3B98 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 690965D025EC2FA0002E3B98 /* IQKeyboardManagerSwift */; };
 		6923578025D2B16F00E01B98 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6923577F25D2B16F00E01B98 /* FirebaseAnalytics */; };
 		6923578225D2B16F00E01B98 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 6923578125D2B16F00E01B98 /* FirebaseFirestoreSwift-Beta */; };
 		6923578425D2B16F00E01B98 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6923578325D2B16F00E01B98 /* FirebaseAuth */; };
 		6923578625D2B16F00E01B98 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6923578525D2B16F00E01B98 /* FirebaseFirestore */; };
 		6923578A25D2B4BF00E01B98 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6923578925D2B4BF00E01B98 /* Firebase.swift */; };
+		692B922325EE81D200596C74 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 692B922525EE81D300596C74 /* Localizable.strings */; };
+		692B922B25EEB70100596C74 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692B922A25EEB70100596C74 /* WelcomeViewController.swift */; };
 		6942F61F25B356130042A365 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942F61E25B356130042A365 /* AppDependency.swift */; };
 		694D8ABA25B21E2B005E2B28 /* CasheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694D8AB925B21E2B005E2B28 /* CasheService.swift */; };
 		695F9DBC25D1D50D0016DB21 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695F9DBB25D1D50D0016DB21 /* Styles.swift */; };
@@ -47,12 +50,17 @@
 		6997E0F625D2BEB10070D0BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6997E0F525D2BEB10070D0BF /* GoogleService-Info.plist */; };
 		69A9E5F125A87FB8007712EE /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9E5F025A87FB8007712EE /* Encryption.swift */; };
 		69CC6BF825B05D9D00686206 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC6BF725B05D9D00686206 /* SwiftKeychainWrapper */; };
+		69D03AC325EAFCF4002A3BD0 /* UIVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D03AC225EAFCF4002A3BD0 /* UIVIewController.swift */; };
 		69E2C7EE25AF57F90088B65C /* ChangeKeyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E2C7EB25AF57F90088B65C /* ChangeKeyPresenter.swift */; };
 		69E2C7EF25AF57F90088B65C /* ChangeKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E2C7EC25AF57F90088B65C /* ChangeKeyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6923578925D2B4BF00E01B98 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		692B922425EE81D300596C74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		692B922725EE81F700596C74 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		692B922825EE81F700596C74 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		692B922A25EEB70100596C74 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		6942F61E25B356130042A365 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		694D8AB925B21E2B005E2B28 /* CasheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasheService.swift; sourceTree = "<group>"; };
 		695F9DBB25D1D50D0016DB21 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -90,6 +98,7 @@
 		6996BE0825A5D5B100B88B39 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6997E0F525D2BEB10070D0BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69A9E5F025A87FB8007712EE /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		69D03AC225EAFCF4002A3BD0 /* UIVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewController.swift; sourceTree = "<group>"; };
 		69E2C7EB25AF57F90088B65C /* ChangeKeyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeKeyPresenter.swift; sourceTree = "<group>"; };
 		69E2C7EC25AF57F90088B65C /* ChangeKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeKeyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +113,7 @@
 				69CC6BF825B05D9D00686206 /* SwiftKeychainWrapper in Frameworks */,
 				6923578625D2B16F00E01B98 /* FirebaseFirestore in Frameworks */,
 				6923578425D2B16F00E01B98 /* FirebaseAuth in Frameworks */,
+				690965D125EC2FA0002E3B98 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +126,7 @@
 				696DD7A225C869BD0094BFB3 /* UIColorExtension.swift */,
 				695F9DBF25D1E6340016DB21 /* UITabBar.swift */,
 				696F994725E8061D006C91AA /* UIText.swift */,
+				69D03AC225EAFCF4002A3BD0 /* UIVIewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,8 +162,8 @@
 				698DF75225ADD41200B96AE3 /* NewPasswordModule */,
 				6996BDF225A5D51400B88B39 /* AddModule */,
 				6996BDF325A5D52A00B88B39 /* SettingModule */,
-				698DF76B25AE200F00B96AE3 /* ShowKeyModule */,
 				69E2C7EA25AF57CB0088B65C /* ChangeKeyModule */,
+				698DF76B25AE200F00B96AE3 /* ShowKeyModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -198,6 +209,7 @@
 		6996BDCB25A5CEDE00B88B39 = {
 			isa = PBXGroup;
 			children = (
+				692B922525EE81D300596C74 /* Localizable.strings */,
 				6996BDD625A5CEDE00B88B39 /* savePassword */,
 				6996BDD525A5CEDE00B88B39 /* Products */,
 			);
@@ -225,6 +237,7 @@
 				6996BDE225A5CEE400B88B39 /* LaunchScreen.storyboard */,
 				6997E0F525D2BEB10070D0BF /* GoogleService-Info.plist */,
 				6996BDE525A5CEE400B88B39 /* Info.plist */,
+				692B922A25EEB70100596C74 /* WelcomeViewController.swift */,
 			);
 			path = savePassword;
 			sourceTree = "<group>";
@@ -290,6 +303,7 @@
 				6923578125D2B16F00E01B98 /* FirebaseFirestoreSwift-Beta */,
 				6923578325D2B16F00E01B98 /* FirebaseAuth */,
 				6923578525D2B16F00E01B98 /* FirebaseFirestore */,
+				690965D025EC2FA0002E3B98 /* IQKeyboardManagerSwift */,
 			);
 			productName = savePassword;
 			productReference = 6996BDD425A5CEDE00B88B39 /* savePassword.app */;
@@ -316,12 +330,14 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 6996BDCB25A5CEDE00B88B39;
 			packageReferences = (
 				69CC6BF625B05D9D00686206 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				6923577E25D2B16F00E01B98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6923578F25D2B91A00E01B98 /* XCRemoteSwiftPackageReference "Resolver" */,
+				690965CF25EC2FA0002E3B98 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 6996BDD525A5CEDE00B88B39 /* Products */;
 			projectDirPath = "";
@@ -338,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6996BDE425A5CEE400B88B39 /* LaunchScreen.storyboard in Resources */,
+				692B922325EE81D200596C74 /* Localizable.strings in Resources */,
 				6996BDE125A5CEE400B88B39 /* Assets.xcassets in Resources */,
 				6997E0F625D2BEB10070D0BF /* GoogleService-Info.plist in Resources */,
 			);
@@ -367,8 +384,10 @@
 				6996BDEF25A5D36F00B88B39 /* AppCoordinator.swift in Sources */,
 				698DF76F25AE204C00B96AE3 /* ShowKeyPresenter.swift in Sources */,
 				697C696025B1C6EF0025A347 /* ShowPasswordViewController.swift in Sources */,
+				692B922B25EEB70100596C74 /* WelcomeViewController.swift in Sources */,
 				69A9E5F125A87FB8007712EE /* Encryption.swift in Sources */,
 				695F9DC025D1E6340016DB21 /* UITabBar.swift in Sources */,
+				69D03AC325EAFCF4002A3BD0 /* UIVIewController.swift in Sources */,
 				695FED8C25C6BF9200A74D23 /* Common.swift in Sources */,
 				6996BE0B25A5D5B100B88B39 /* SettingViewController.swift in Sources */,
 				695F9DBC25D1D50D0016DB21 /* Styles.swift in Sources */,
@@ -390,10 +409,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		692B922525EE81D300596C74 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				692B922425EE81D300596C74 /* en */,
+				692B922825EE81F700596C74 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		6996BDE225A5CEE400B88B39 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6996BDE325A5CEE400B88B39 /* Base */,
+				692B922725EE81F700596C74 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -405,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -466,6 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -581,6 +612,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		690965CF25EC2FA0002E3B98 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.6;
+			};
+		};
 		6923577E25D2B16F00E01B98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -608,6 +647,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		690965D025EC2FA0002E3B98 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 690965CF25EC2FA0002E3B98 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		6923577F25D2B16F00E01B98 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6923577E25D2B16F00E01B98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

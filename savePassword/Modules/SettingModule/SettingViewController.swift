@@ -23,19 +23,19 @@ class SettingViewController: UIViewController, SettingViewProtocol {
         let view = UIView()
         tableView.alwaysBounceVertical = true
         self.view = view
-        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         presenter.view = self
         presenter.viewDidLoad()
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+ 
     
     func configure(){
         view.backgroundColor = .systemBackground
@@ -73,11 +73,11 @@ extension SettingViewController: UITableViewDataSource {
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 22)
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text = Localization.Setting.showKey
+            cell.textLabel?.text = NSLocalizedString(Localization.Setting.showKey, comment: "")
         case 1:
-            cell.textLabel?.text = Localization.Setting.changeKey
+            cell.textLabel?.text = NSLocalizedString(Localization.Setting.changeKey, comment: "")
         case 2:
-            cell.textLabel?.text = Localization.Setting.exit
+            cell.textLabel?.text = NSLocalizedString(Localization.Setting.exit, comment: "")  
         default:
             cell.textLabel?.text = "error"
         }

@@ -35,14 +35,17 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
     }
     
     func buttonPressedPresenter(){
-        appDepedency?.firestore.removeTask(Common.listOfLoginAndPassword[numberOfRow!])
-        (self.view as! ShowPasswordViewController).dismiss(animated: true, completion: nil)
-        let listNavigationControllers = ((self.view as! ShowPasswordViewController).presentingViewController as! UITabBarController).viewControllers?[0] as! UINavigationController
-        let vc = listNavigationControllers.viewControllers[0] as! ListViewController
-        
-        DispatchQueue.global().async {
-            vc.presenter.updateList()
-        }
+        appDepedency?.firestore.removeTask(Common.listOfLoginAndPassword[numberOfRow!], completion: {
+            (self.view as! ShowPasswordViewController).dismiss(animated: true, completion: nil)
+            let listNavigationControllers = ((self.view as! ShowPasswordViewController).presentingViewController as! UITabBarController).viewControllers?[0] as! UINavigationController
+            let vc = listNavigationControllers.viewControllers[0] as! ListViewController
+            
+            DispatchQueue.global().async {
+                vc.presenter.updateList()
+            }
+        })
+
+
     }
     
     

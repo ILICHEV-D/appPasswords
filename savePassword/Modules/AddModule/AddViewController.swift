@@ -19,6 +19,9 @@ class AddViewController: UIViewController, AddViewProtocol {
     let loginField = UITextField()
     let loginFieldTitle = UILabel()
     var cleanButton = UIButton()
+    var buttonOfPasswordField = UIButton()
+    
+    var iconClick = true
     
     
     init(presenter: AddPresenterProtocol, appDepedency: AppDependency) {
@@ -42,10 +45,33 @@ class AddViewController: UIViewController, AddViewProtocol {
         
         presenter.view = self
         presenter.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        passwordField.isSecureTextEntry = true
     }
+    
+    @IBAction func iconAction(sender: AnyObject) {
+            if(iconClick == true) {
+                passwordField.isSecureTextEntry = false
+                buttonOfPasswordField.setImage(UIImage(systemName: "lock.circle.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            } else {
+                passwordField.isSecureTextEntry = true
+                buttonOfPasswordField.setImage(UIImage(systemName: "lock.circle")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            }
+
+            iconClick = !iconClick
+        }
     
     
     func configure(){
+        
+        buttonOfPasswordField.setImage(UIImage(systemName: "lock.circle")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        buttonOfPasswordField.imageEdgeInsets = UIEdgeInsets(top: 0, left: -25, bottom: 0, right: 0)
+        buttonOfPasswordField.frame = CGRect(x: CGFloat(self.passwordField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        buttonOfPasswordField.addTarget(self, action: #selector(self.iconAction), for: .touchUpInside)
+        passwordField.rightView = buttonOfPasswordField
+        passwordField.rightViewMode = .always
+        
+        
         
         commonStack.axis = .vertical
         commonStack.spacing = 15
@@ -53,9 +79,9 @@ class AddViewController: UIViewController, AddViewProtocol {
         topTitleOfCN.textColor = .white
         topTitleOfCN.font = UIFont.boldSystemFont(ofSize: 30)
         
-        iconFieldTitle.text = Localization.Add.name
-        loginFieldTitle.text = Localization.Add.login
-        passwordFieldTitle.text = Localization.Add.password
+        iconFieldTitle.text = NSLocalizedString(Localization.Add.name, comment: "")
+        loginFieldTitle.text = NSLocalizedString(Localization.Add.login, comment: "")
+        passwordFieldTitle.text = NSLocalizedString(Localization.Add.password, comment: "")
         
         [passwordFieldTitle, loginFieldTitle, iconFieldTitle].forEach({
             $0.font = .systemFont(ofSize: 15)
@@ -71,6 +97,7 @@ class AddViewController: UIViewController, AddViewProtocol {
             $0.backgroundColor = .systemGray5
             $0.layer.cornerRadius = 15
             $0.indent(size: 10)
+            $0.autocorrectionType = .no
         })
         
         
@@ -79,9 +106,10 @@ class AddViewController: UIViewController, AddViewProtocol {
         passwordField.frame = frameRect;
         
         cleanButton.backgroundColor = Styles.Color.appBaseColor
-        cleanButton.setTitle(Localization.Add.sign, for: .normal)
+        cleanButton.setTitle(NSLocalizedString(Localization.Add.create, comment: ""), for: .normal)
+        cleanButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         cleanButton.titleLabel?.textColor = .systemBackground
-        cleanButton.layer.cornerRadius = 10
+        cleanButton.layer.cornerRadius = 15
     }
     
     
@@ -150,9 +178,9 @@ class AddViewController: UIViewController, AddViewProtocol {
             commonStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             cleanButton.topAnchor.constraint(equalTo: commonStack.bottomAnchor, constant: 40),
-            cleanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            cleanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
-            cleanButton.heightAnchor.constraint(equalToConstant: 30)
+            cleanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            cleanButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            cleanButton.heightAnchor.constraint(equalToConstant: 35)
             
         ].forEach({$0.isActive = true})
         

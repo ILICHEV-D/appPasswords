@@ -34,20 +34,26 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.largeTitleDisplayMode = .never
         presenter.view = self
         presenter.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
     }
+    
     
     @objc func pressedButton(){
         presenter.changeKey()
     }
     
+    @IBAction func CloseModal(_ sender: Any) {
+       self.dismiss(animated: true, completion: nil)
+    }
+    
     func configure(){
-        keyLabel.text = Localization.Setting.key
+        keyLabel.text = NSLocalizedString(Localization.Setting.key, comment: "")
         keyLabel.textColor = .label
         keyLabel.font = UIFont.boldSystemFont(ofSize: 22)
-        keyDescriptionLabel.text = Localization.Setting.keyDescriotion
+        keyDescriptionLabel.text = NSLocalizedString(Localization.Setting.changeKeyDescription, comment: "")
         keyDescriptionLabel.textColor = .secondaryLabel
         keyDescriptionLabel.font = UIFont.boldSystemFont(ofSize: 15)
         
@@ -62,9 +68,10 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
         stackKey.alignment = .center
         
         button.backgroundColor = Styles.Color.appBaseColor
-        button.setTitle(Localization.Setting.buttonChange, for: .normal)
+        button.setTitle(NSLocalizedString(Localization.Setting.buttonChange, comment: ""), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.titleLabel?.textColor = .white
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 15
         
         [keyField1, keyField2, keyField3, keyField4
          
@@ -117,7 +124,8 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
             
             button.topAnchor.constraint(equalTo: stackKey.bottomAnchor, constant: 30),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -60)
+            button.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -60),
+            button.heightAnchor.constraint(equalToConstant: 40)
             
         ].forEach({$0.isActive = true})
         

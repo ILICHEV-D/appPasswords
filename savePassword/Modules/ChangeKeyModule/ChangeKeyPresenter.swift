@@ -34,7 +34,7 @@ class ChangeKeyPresenter: ChangeKeyPresenterProtocol {
         let key3 = (self.view as! ChangeKeyViewController).keyField3.text ?? "0"
         let key4 = (self.view as! ChangeKeyViewController).keyField4.text ?? "0"
         
-        let alertController = UIAlertController(title: Localization.Setting.Alert.error, message: Localization.Setting.Alert.messageEmpty, preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString(Localization.Setting.Alert.error, comment: "") , message: NSLocalizedString(Localization.Setting.Alert.messageEmpty, comment: ""), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         
@@ -57,11 +57,14 @@ class ChangeKeyPresenter: ChangeKeyPresenterProtocol {
         reloadScreens()
     }
     
+    
     func reloadScreens(){
-        let listNavigationControllers = ((self.view as! ChangeKeyViewController).presentingViewController as! UITabBarController).viewControllers?[0] as! UINavigationController
+        let tabBarController = (self.view as! ChangeKeyViewController).navigationController?.viewControllers[0].tabBarController
+        let listNavigationControllers = tabBarController?.viewControllers?[0] as! UINavigationController
         let vc = listNavigationControllers.viewControllers[0] as! ListViewController
         vc.presenter.updateList()
         
+        (self.view as! ChangeKeyViewController).navigationController?.popViewController(animated: true)
         (self.view as! ChangeKeyViewController).dismiss(animated: true, completion: nil)
     }
     

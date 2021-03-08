@@ -11,6 +11,7 @@ protocol NewPasswordViewProtocol: class {
 
 // MARK: Presenter -
 protocol NewPasswordPresenterProtocol: class {
+    
     var view: NewPasswordViewProtocol? { get set }
     var appDepedency: AppDependency? { get set }
     func viewDidLoad()
@@ -51,7 +52,7 @@ class NewPasswordPresenter: NewPasswordPresenterProtocol {
         }
         else {
             addVC.topView.backgroundColor = Styles.Color.appBaseColor
-            addVC.topTitleOfCN.text = Localization.Add.newPassword
+            addVC.topTitleOfCN.text = NSLocalizedString(Localization.Add.newPassword, comment: "")
         }
         
         (view as! NewPasswordViewController).navigationController?.present(addVC, animated: true, completion: nil)

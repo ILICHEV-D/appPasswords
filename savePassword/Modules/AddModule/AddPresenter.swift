@@ -38,8 +38,8 @@ class AddPresenter: AddPresenterProtocol {
         let password = (self.view as! AddViewController).passwordField.text ?? ""
         let icon = (self.view as! AddViewController).iconField.text ?? ""
         
-        let alertController = UIAlertController(title: Localization.Add.error, message: Localization.Add.errorDescription, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: Localization.Add.ok, style: .cancel, handler: nil))
+        let alertController = UIAlertController(title: NSLocalizedString(Localization.Add.error, comment: ""), message: NSLocalizedString(Localization.Add.errorDescription, comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString(Localization.Add.ok, comment: ""), style: .cancel, handler: nil))
         
         if login.isEmpty || password.isEmpty || icon.isEmpty {
             (self.view as! AddViewController).present(alertController, animated: true, completion: nil)
@@ -48,12 +48,17 @@ class AddPresenter: AddPresenterProtocol {
         
         let item = Common.addLoginAndPassword(login: login, password: password, icon: name ?? icon, crypt: appDepedency!.cryptService)
         
-        appDepedency?.firestore.addTask(item)
+
+        appDepedency?.firestore.addTask(item, completion: {
+            self.reloadScreens()
+        })
+        
         
         (self.view as! AddViewController).loginField.text = ""
         (self.view as! AddViewController).passwordField.text = ""
         (self.view as! AddViewController).iconField.text = ""
-        reloadScreens()
+        
+   //     self.reloadScreens()
     }
     
     func reloadScreens(){

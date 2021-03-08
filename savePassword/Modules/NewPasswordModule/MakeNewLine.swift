@@ -10,11 +10,12 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     let stackListMembers = UIStackView() //внутренний стэк
     let scrollViewFriends = UIScrollView() //скролл
     let viewForScrollViewFriends = UIView() //view
+    let contentView = UIView()
     
     button.addTarget(self, action: #selector(self.pressedButton), for: .touchUpInside)
     
     button.backgroundColor = Styles.Color.appBaseColor
-    button.setTitle(Localization.Add.sign, for: .normal)
+    button.setTitle(NSLocalizedString(Localization.Add.create, comment: ""), for: .normal)
     button.titleLabel?.textColor = .label
     button.layer.cornerRadius = 10
     
@@ -36,16 +37,16 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     
     labelMembersTitle.font = UIFont.boldSystemFont(ofSize: 28)
     labelMembersTitle.textColor = .label
-    labelMembersTitle.text = name
-    
+    labelMembersTitle.text = NSLocalizedString(name, comment: "")
+ //   labelMembersTitle.text = name
+
     
     stackViewMembers.addArrangedSubview(labelMembersTitle)
     stackViewMembers.addArrangedSubview(viewForScrollViewFriends)
     
-    
     viewForScrollViewFriends.addSubview(scrollViewFriends)
-    
-    scrollViewFriends.addSubview(stackListMembers)
+    scrollViewFriends.addSubview(contentView)
+    contentView.addSubview(stackListMembers)
     stackListMembers.addArrangedSubview(UIImageView())
     
     stackListMembers.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10) //отступы
@@ -57,7 +58,8 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     stackListMembers.translatesAutoresizingMaskIntoConstraints = false
     scrollViewFriends.translatesAutoresizingMaskIntoConstraints = false
     viewForScrollViewFriends.translatesAutoresizingMaskIntoConstraints = false
-    
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+        
     [
         
         viewForScrollViewFriends.heightAnchor.constraint(equalToConstant: 95),
@@ -65,16 +67,24 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
         viewForScrollViewFriends.leadingAnchor.constraint(equalTo: stackViewMembers.leadingAnchor),
         viewForScrollViewFriends.trailingAnchor.constraint(equalTo: stackViewMembers.trailingAnchor),
         
-        
         scrollViewFriends.topAnchor.constraint(equalTo: viewForScrollViewFriends.topAnchor),
         scrollViewFriends.leadingAnchor.constraint(equalTo: viewForScrollViewFriends.leadingAnchor),
         scrollViewFriends.trailingAnchor.constraint(equalTo: viewForScrollViewFriends.trailingAnchor),
         scrollViewFriends.bottomAnchor.constraint(equalTo: viewForScrollViewFriends.bottomAnchor),
         
-        stackListMembers.topAnchor.constraint(equalTo: scrollViewFriends.topAnchor, constant: 5),
-        stackListMembers.bottomAnchor.constraint(equalTo: scrollViewFriends.bottomAnchor),
-        stackListMembers.leadingAnchor.constraint(equalTo: scrollViewFriends.leadingAnchor),
-        stackListMembers.trailingAnchor.constraint(equalTo: scrollViewFriends.trailingAnchor),
+        contentView.topAnchor.constraint(equalTo: scrollViewFriends.topAnchor),
+        contentView.leadingAnchor.constraint(equalTo: scrollViewFriends.leadingAnchor),
+        contentView.trailingAnchor.constraint(equalTo: scrollViewFriends.trailingAnchor),
+        contentView.bottomAnchor.constraint(equalTo: scrollViewFriends.bottomAnchor),
+        
+//        contentView.heightAnchor.constraint(equalTo: viewForScrollViewFriends.heightAnchor),
+//        contentView.widthAnchor.constraint(equalTo: viewForScrollViewFriends.widthAnchor),
+//
+        
+        stackListMembers.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+        stackListMembers.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        stackListMembers.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+        stackListMembers.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         
     ].forEach({$0.isActive = true})
     
@@ -130,12 +140,16 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
         
         self.view.backgroundColor = .systemBackground
         
+
         viewPerson.backgroundColor = .clear
         viewPerson.layer.cornerRadius = 15
         viewPerson.layer.shadowRadius = 4
         viewPerson.layer.shadowOpacity = 0.5
         viewPerson.layer.shadowColor = UIColor.black.cgColor
         viewPerson.layer.shadowOffset = CGSize(width: 3, height: 3)
+
+ //       viewPerson.layer.shadowPath = UIBezierPath(roundedRect: viewPerson.layer.bounds, cornerRadius: viewPerson.layer.cornerRadius).cgPath
+
         
         stackListMembers.addArrangedSubview(viewPerson)
     }

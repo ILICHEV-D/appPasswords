@@ -43,7 +43,9 @@ class SettingPresenter: SettingPresenterProtocol {
     func goToChangeKey(){
         let changeKeyPresenter = ChangeKeyPresenter()
         let changeKeyVC = ChangeKeyViewController(presenter: changeKeyPresenter, appDepedency: appDepedency!)
-        (view as! SettingViewController).navigationController?.present(changeKeyVC, animated: true, completion: nil)
+        changeKeyVC.modalPresentationStyle = .fullScreen
+        (view as! SettingViewController).navigationController?.pushViewController(changeKeyVC, animated: true)
+  //      (view as! SettingViewController).navigationController?.present(changeKeyVC, animated: true, completion: nil)
     }
     
     func exit() {
@@ -57,8 +59,9 @@ class SettingPresenter: SettingPresenterProtocol {
             vc.dismiss(animated: true, completion: nil)
         }
         vc.modalPresentationStyle = .fullScreen
-        listNavigationControllers.present(vc, animated: false, completion: nil)
-        listNavigationControllers.tabBarController!.selectedIndex = 0
+        listNavigationControllers.present(vc, animated: false, completion: {
+            listNavigationControllers.tabBarController!.selectedIndex = 0
+        })
         do {
             try Auth.auth().signOut()
         }

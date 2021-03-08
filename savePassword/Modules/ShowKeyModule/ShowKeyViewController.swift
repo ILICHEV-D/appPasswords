@@ -36,10 +36,10 @@ class ShowKeyViewController: UIViewController, ShowKeyViewProtocol {
     }
     
     func configure(){
-        keyLabel.text = Localization.Setting.key
+        keyLabel.text = NSLocalizedString(Localization.Setting.key, comment: "")
         keyLabel.textColor = .label
         keyLabel.font = UIFont.boldSystemFont(ofSize: 22)
-        keyDescriptionLabel.text = Localization.Setting.keyDescriotion
+        keyDescriptionLabel.text = NSLocalizedString(Localization.Setting.keyDescription, comment: "")
         keyDescriptionLabel.textColor = .secondaryLabel
         keyDescriptionLabel.font = UIFont.boldSystemFont(ofSize: 15)
         

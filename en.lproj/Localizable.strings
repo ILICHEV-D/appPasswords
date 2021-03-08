@@ -1,0 +1,35 @@
+"Passwords" = "Passwords";
+"Add" = "New password";
+"Setting"  = "Setting";
+
+
+"Delete" = "Delete";
+
+
+"Create" = "Create";
+"Error" = "Error";
+"ErrorDescription" = "Fill in all the fields";
+"Ok" = "Ok";
+"Login" = "Login";
+"Password" = "Password";
+"Name" = "Name";
+"NewPassword" = "New password";
+
+
+"ShowKey" = "Show key";
+"ChangeKey" = "Change Key";
+"Exit" = "Exit";
+"Key" = "Encryption keys";
+"KeyDescription" = "If you lose your phone, your key will be reset when you re-log in. You can restore access to passwords only by entering these keys on a new device. Keep them in a safe place.";
+
+"ChangeKeyDescription" = "You should only change the keys if you are logged in from a new device. If this key was used to encrypt passwords, be sure to save it. Be careful.";
+
+"ButtonChange" = "Change";
+"MessageEmpty" = "You left empty fields or entered too many numbers";
+
+"SocialNetwork" = "Social network";
+"Travelling" = "Travelling";
+"GamesEntertainments" = "Games, entertainments";
+
+"WelcomeDescription" = "savePassword encrypts your passwords using encryption keys that are stored locally on your device. \n \n When you log in, you will receive a generated key. Save it. \n \n  Passwords are sent to the server already in encrypted form.";
+"Welcome" = "Welcome to savePassword";
