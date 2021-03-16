@@ -10,6 +10,7 @@
 "Error" = "Error";
 "ErrorDescription" = "Fill in all the fields";
 "Ok" = "Ok";
+"TooLong" = "Too long login or password";
 "Login" = "Login";
 "Password" = "Password";
 "Name" = "Name";
@@ -21,6 +22,10 @@
 "Exit" = "Exit";
 "Key" = "Encryption keys";
 "KeyDescription" = "If you lose your phone, your key will be reset when you re-log in. You can restore access to passwords only by entering these keys on a new device. Keep them in a safe place.";
+"Warning" = "Warning";
+"WarningDescription" = "When you log out of your account, your encryption keys will be reset. You may lose access to passwords if you didn't write them down.";
+"Cancel" = "Cancel";
+"Contact" = "Contact us";
 
 "ChangeKeyDescription" = "You should only change the keys if you are logged in from a new device. If this key was used to encrypt passwords, be sure to save it. Be careful.";
 
@@ -32,4 +37,4 @@
 "GamesEntertainments" = "Games, entertainments";
 
 "WelcomeDescription" = "savePassword encrypts your passwords using encryption keys that are stored locally on your device. \n \n When you log in, you will receive a generated key. Save it. \n \n  Passwords are sent to the server already in encrypted form.";
-"Welcome" = "Welcome to savePassword";
+"Welcome" = "Welcome to";

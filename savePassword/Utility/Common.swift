@@ -17,13 +17,13 @@ class Common {
 
 extension Common {
     
-    static var namesOfIcons = ["ps", "netflix", "skype", "skyscanner", "discord", "twitter", "trivago", "xbox", "reddit", "blizzard", "facebook", "snapchat", "spotify", "booking", "zoom", "instagram", "vk", "airbnb", "tripadvisor", "steam", "origin"]
+    static var namesOfIcons = ["playstation", "netflix", "skype", "skyscanner", "discord", "twitter", "trivago", "xbox", "reddit", "blizzard", "facebook", "snapchat", "spotify", "booking", "zoom", "instagram", "vk", "airbnb", "tripadvisor", "steam", "origin"]
     
     static var dictionaryOfTypes: [(key: String, value: [String])] = [
         
         ("SocialNetwork", ["skype", "twitter", "reddit", "facebook", "snapchat", "instagram", "vk"]),
-                                                                      ("Travelling", ["skyscanner", "trivago", "booking", "tripadvisor"]),
-                                                                      ("GamesEntertainments", [ "ps", "netflix", "discord", "xbox", "blizzard", "spotify", "steam", "origin"])]
+        ("Travelling", ["skyscanner", "trivago", "booking", "tripadvisor"]),
+        ("GamesEntertainments", [ "playstation", "netflix", "discord", "xbox", "blizzard", "spotify", "steam", "origin"])]
     
     
     static var listOfIcons = [Icons]()
@@ -37,7 +37,7 @@ extension Common {
         }
     }
     
-    static let user1 = UserModel(image: UIImage(named: "1")!, name: "first")
-    static let user2 = UserModel(image: UIImage(named: "2")!, name: "second")
-    static let user3 = UserModel(image: UIImage(named: "3")!, name: "third")
+    //    static let user1 = UserModel(image: UIImage(named: "1")!, name: "first")
+    //    static let user2 = UserModel(image: UIImage(named: "2")!, name: "second")
+    //    static let user3 = UserModel(image: UIImage(named: "3")!, name: "third")
 }

@@ -6,11 +6,11 @@ extension UITabBar {
         setTabBarItemColors(appearance.stackedLayoutAppearance,color)
         setTabBarItemColors(appearance.inlineLayoutAppearance, color)
         setTabBarItemColors(appearance.compactInlineLayoutAppearance, color)
-
+        
         self.standardAppearance = appearance
     }
 }
-    
+
 
 @available(iOS 13.0, *)
 private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance, _ color: UIColor) {

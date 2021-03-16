@@ -4,6 +4,7 @@ import Firebase
 import SwiftKeychainWrapper
 
 
+
 // MARK: View -
 protocol SettingViewProtocol: class {
     func addAll()
@@ -46,6 +47,10 @@ class SettingPresenter: SettingPresenterProtocol {
         changeKeyVC.modalPresentationStyle = .fullScreen
         (view as! SettingViewController).navigationController?.pushViewController(changeKeyVC, animated: true)
   //      (view as! SettingViewController).navigationController?.present(changeKeyVC, animated: true, completion: nil)
+    }
+    
+    func mail(){
+        
     }
     
     func exit() {

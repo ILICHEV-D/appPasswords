@@ -38,8 +38,7 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     labelMembersTitle.font = UIFont.boldSystemFont(ofSize: 28)
     labelMembersTitle.textColor = .label
     labelMembersTitle.text = NSLocalizedString(name, comment: "")
- //   labelMembersTitle.text = name
-
+    
     
     stackViewMembers.addArrangedSubview(labelMembersTitle)
     stackViewMembers.addArrangedSubview(viewForScrollViewFriends)
@@ -59,7 +58,7 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
     scrollViewFriends.translatesAutoresizingMaskIntoConstraints = false
     viewForScrollViewFriends.translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
-        
+    
     [
         
         viewForScrollViewFriends.heightAnchor.constraint(equalToConstant: 95),
@@ -77,9 +76,9 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
         contentView.trailingAnchor.constraint(equalTo: scrollViewFriends.trailingAnchor),
         contentView.bottomAnchor.constraint(equalTo: scrollViewFriends.bottomAnchor),
         
-//        contentView.heightAnchor.constraint(equalTo: viewForScrollViewFriends.heightAnchor),
-//        contentView.widthAnchor.constraint(equalTo: viewForScrollViewFriends.widthAnchor),
-//
+        //        contentView.heightAnchor.constraint(equalTo: viewForScrollViewFriends.heightAnchor),
+        //        contentView.widthAnchor.constraint(equalTo: viewForScrollViewFriends.widthAnchor),
+        //
         
         stackListMembers.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
         stackListMembers.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -140,16 +139,16 @@ func makeNewLine(name: String, self: NewPasswordViewController, listOfIcons: [Ic
         
         self.view.backgroundColor = .systemBackground
         
-
+        
         viewPerson.backgroundColor = .clear
         viewPerson.layer.cornerRadius = 15
         viewPerson.layer.shadowRadius = 4
         viewPerson.layer.shadowOpacity = 0.5
         viewPerson.layer.shadowColor = UIColor.black.cgColor
         viewPerson.layer.shadowOffset = CGSize(width: 3, height: 3)
-
- //       viewPerson.layer.shadowPath = UIBezierPath(roundedRect: viewPerson.layer.bounds, cornerRadius: viewPerson.layer.cornerRadius).cgPath
-
+        
+        //       viewPerson.layer.shadowPath = UIBezierPath(roundedRect: viewPerson.layer.bounds, cornerRadius: viewPerson.layer.cornerRadius).cgPath
+        
         
         stackListMembers.addArrangedSubview(viewPerson)
     }

@@ -7,44 +7,30 @@ import SwiftKeychainWrapper
 protocol TaskRepository {
     func addTask(_ task: LoginAndPassword, completion: @escaping () -> Void)
     func removeTask(_ task: LoginAndPassword, completion: @escaping () -> Void)
-    //  func updateTask(_ task: LoginAndPassword)
     func loadData(completion: @escaping () -> Void)
- //   func loadData(beginHandler: @escaping () -> (), completionHandler: @escaping () -> ())
- //   func loadData()
 }
 
 
 class FirestoreTaskRepository: TaskRepository {
-
     
-    var db = Firestore.firestore() // (1)
-    
-    
+    var db = Firestore.firestore()
     
     func loadData (completion: @escaping () -> Void = {}) {
- //   func loadData () {
- //   func loadData(beginHandler: @escaping () -> (), completionHandler: @escaping () -> ()){
-        
-        db.collection(KeychainWrapper.standard.string(forKey: "uid") ?? "0").order(by: "createdTime").addSnapshotListener { (querySnapshot, error) in // (2)
+        db.collection(KeychainWrapper.standard.string(forKey: "uid") ?? "0").order(by: "createdTime").addSnapshotListener { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
                 Common.listOfLoginAndPassword = querySnapshot.documents.compactMap { document -> LoginAndPassword?
-                    in // !!!!!
+                    in
                     try? document.data(as: LoginAndPassword.self)
                 }
+                Common.listOfLoginAndPassword.reverse() //!!!
                 completion()
             }
         }
     }
     
-    //    db.collection(K.FStore.collectionName).order(by: K.FStore.dateField).addSnapshotListener { (querySnapshot, error) in
-    //        self.messages = []
-    //        if let e = error{
-    
-    
     func addTask(_ task: LoginAndPassword, completion: @escaping () -> Void = {}) {
         do {
             let _ = try db.collection(KeychainWrapper.standard.string(forKey: "uid")!).addDocument(from: task)
-            //    let _ = try db.collection("tasks").addDocument(from: task)
         }
         catch {
             print("There was an error while trying to save a task \(error.localizedDescription).")
@@ -52,19 +38,6 @@ class FirestoreTaskRepository: TaskRepository {
         completion()
     }
     
-    //
-    //
-    //
-    //    func updateTask(_ task: LoginAndPassword) {
-    //      if let taskID = task.id {
-    //        do {
-    //          try db.collection("tasks").document(taskID).setData(from: task) // (1)
-    //        }
-    //        catch {
-    //          print("There was an error while trying to update a task \(error.localizedDescription).")
-    //        }
-    //      }
-    //    }
     
     func removeTask(_ task: LoginAndPassword, completion: @escaping () -> Void = {}) {
         if let taskID = task.id {

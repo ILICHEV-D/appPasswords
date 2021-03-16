@@ -46,6 +46,16 @@ class AddPresenter: AddPresenterProtocol {
             return
         }
         
+        
+        let alertController2 = UIAlertController(title: NSLocalizedString(Localization.Add.error, comment: ""), message: NSLocalizedString(Localization.Add.tooLong, comment: ""), preferredStyle: .alert)
+        alertController2.addAction(UIAlertAction(title: NSLocalizedString(Localization.Add.ok, comment: ""), style: .cancel, handler: nil))
+        
+        if login.count > 40 || password.count > 50 {
+            (self.view as! AddViewController).present(alertController2, animated: true, completion: nil)
+            return
+        }
+        
+        
         let item = Common.addLoginAndPassword(login: login, password: password, icon: name ?? icon, crypt: appDepedency!.cryptService)
         
 

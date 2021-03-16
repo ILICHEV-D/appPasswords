@@ -46,7 +46,7 @@ class ChangeKeyViewController: UIViewController, ChangeKeyViewProtocol {
     }
     
     @IBAction func CloseModal(_ sender: Any) {
-       self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func configure(){

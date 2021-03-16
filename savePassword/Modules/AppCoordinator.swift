@@ -1,7 +1,5 @@
 import Foundation
 import UIKit
-import Firebase
-import SwiftUI
 
 
 class AppCoordinator{
@@ -45,15 +43,6 @@ private extension AppCoordinator {
                 tag: 0)
         
         navigationControllers.append(listNC)
-
-//        "choice1" = "first";
-//        "choice2" = "second";
-//        "choice3"  = "third";
-//
-//        "choice1" = "первый";
-//        "choice2" = "второй";
-//        "choice3"  = "третий";
-
     }
     
     func setupAdd() {
@@ -66,7 +55,7 @@ private extension AppCoordinator {
         newPasswordVC.tabBarItem =
             UITabBarItem(
                 title: NSLocalizedString(Localization.TabBar.add, comment: ""),
-                image: UIImage(systemName: "plus.circle"),
+                image: UIImage(systemName: "plus.app"),
                 tag: 1)
         navigationControllers.append(newPasswordNC)
     }

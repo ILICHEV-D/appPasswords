@@ -13,17 +13,15 @@ class CacheService: CacheProtocol {
         if FileManager.default.fileExists(atPath: cachesDir) {
             if let data = FileManager.default.contents(atPath: cachesDir){
                 let listOfLoginAndPassword = try? PropertyListDecoder().decode([LoginAndPassword].self, from: data)
-                Common.listOfLoginAndPassword = listOfLoginAndPassword ?? [] //!!!
+                Common.listOfLoginAndPassword = listOfLoginAndPassword ?? []
                 print("Успешно скачано из кэша")
             }
         }
     }
     
     func downloadDataToCash(){
-        let data = try? PropertyListEncoder().encode(Common.listOfLoginAndPassword)   //!!!
-        FileManager.default.createFile(atPath: cachesDir, contents: data!, attributes: nil) //!!!
+        let data = try? PropertyListEncoder().encode(Common.listOfLoginAndPassword)
+        FileManager.default.createFile(atPath: cachesDir, contents: data!, attributes: nil)
         print("Успешно загружено в кэш")
     }
-    
-    
 }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,20 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame 32" translatesAutoresizingMaskIntoConstraints="NO" id="7yW-Ng-PyD">
+                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RWO-lG-ua1">
                                 <rect key="frame" x="107" y="348" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="4X2-tt-rJx"/>
-                                    <constraint firstAttribute="width" constant="200" id="Smw-G6-Vh2"/>
+                                    <constraint firstAttribute="height" constant="200" id="hOu-Gy-JG5"/>
+                                    <constraint firstAttribute="width" constant="200" id="ozM-xw-DvJ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.18630200620000001" green="0.75035935639999995" blue="0.42081171270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.19372287390000001" green="0.75036931039999999" blue="0.39908128980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7yW-Ng-PyD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5zA-zP-hmd"/>
-                            <constraint firstItem="7yW-Ng-PyD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vd7-Nn-YPw"/>
+                            <constraint firstItem="RWO-lG-ua1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Iil-yD-Tzq"/>
+                            <constraint firstItem="RWO-lG-ua1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jdF-it-Fli"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +38,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Frame 32" width="152" height="205"/>
+        <image name="circleIcon" width="1250" height="1132"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

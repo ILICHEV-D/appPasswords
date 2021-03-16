@@ -1,11 +1,3 @@
-//
-//  ContentView.swift
-//  LoginWithAppleFirebaseSwiftUI
-//
-//  Created by Joseph Hinkle on 12/15/19.
-//  Copyright © 2019 Joseph Hinkle. All rights reserved.
-//
-
 import SwiftUI
 import Foundation
 import FirebaseAuth
@@ -16,44 +8,41 @@ import SwiftKeychainWrapper
 struct ContentView: View {
     @State var text = ""
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var isNavigationBarHidden: Bool = true
+
     
     var body: some View {
-        NavigationView {
             VStack {
-                Image("sign")
-                    .frame(width: 100, height: 100, alignment: .center)
-//                  .resizable()
-//                  .aspectRatio(contentMode: .fit)
-//                  .padding(.horizontal, 120)
-//                  .padding(.top, 0)
-                  .padding(.bottom, 100)
-                
-                Spacer()
+                Image("circleIcon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.horizontal, 40)
 
-                
-                Text(NSLocalizedString(Localization.Welcome.welcome, comment: ""))
+        
+                VStack {
+                  Text(NSLocalizedString(Localization.Welcome.welcome, comment: ""))
                     .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 20)
+                  
+                  Text("SavePassword")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                }
 
-
-                
                 Text(NSLocalizedString(Localization.Welcome.welcomeDescription, comment: ""))
-                  .font(.headline)
-                  .fontWeight(.medium)
-                  .multilineTextAlignment(.center)
-             //     .padding(.bottom, 20)
+                    .font(.headline)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 20)
+                  
+                Spacer()
                 
-                
-                
-                Text(text)
+                                
                 SignInWithAppleToFirebase({ response in
                     if response == .success {
-                        self.text = "Success"
                         Auth.auth().addStateDidChangeListener { (auth: Auth, user: User?) in
                             if let user = user {
                                 if let email = user.email {
-                                    self.text = "Successfully logged into Firebase with Sign in with Apple\n\nuser.id: \(user.uid)\nuser.email: \(email)\nauth: \(auth)"
+                                    self.text = "\(user.uid), \(email), \(auth)"
                                     KeychainWrapper.standard.set(user.uid, forKey: "uid", withAccessibility: .alwaysThisDeviceOnly, isSynchronizable: false)
                                     NotificationCenter.default.post(name: NSNotification.Name("dismissSwiftUI"), object: nil)
                                 }
@@ -63,13 +52,10 @@ struct ContentView: View {
                         self.text = "Error"
                     }
                 })
-                    .frame(height: 50, alignment: .center)
-                    .padding(25)
+                .frame(width: 280, height: 45)
+                .padding(.bottom, 30)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-            .padding(0)
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -44,8 +44,6 @@ class ShowPasswordPresenter: ShowPasswordPresenterProtocol {
                 vc.presenter.updateList()
             }
         })
-
-
     }
     
     

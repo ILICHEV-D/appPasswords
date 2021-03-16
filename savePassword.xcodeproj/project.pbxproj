@@ -48,6 +48,7 @@
 		6996BE0A25A5D5B100B88B39 /* SettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6996BE0725A5D5B100B88B39 /* SettingPresenter.swift */; };
 		6996BE0B25A5D5B100B88B39 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6996BE0825A5D5B100B88B39 /* SettingViewController.swift */; };
 		6997E0F625D2BEB10070D0BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6997E0F525D2BEB10070D0BF /* GoogleService-Info.plist */; };
+		699F18192600B929007BFAEB /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 699F18182600B929007BFAEB /* circleIcon.png */; };
 		69A9E5F125A87FB8007712EE /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A9E5F025A87FB8007712EE /* Encryption.swift */; };
 		69CC6BF825B05D9D00686206 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 69CC6BF725B05D9D00686206 /* SwiftKeychainWrapper */; };
 		69D03AC325EAFCF4002A3BD0 /* UIVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D03AC225EAFCF4002A3BD0 /* UIVIewController.swift */; };
@@ -97,6 +98,7 @@
 		6996BE0725A5D5B100B88B39 /* SettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresenter.swift; sourceTree = "<group>"; };
 		6996BE0825A5D5B100B88B39 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6997E0F525D2BEB10070D0BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		699F18182600B929007BFAEB /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circleIcon.png; sourceTree = "<group>"; };
 		69A9E5F025A87FB8007712EE /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		69D03AC225EAFCF4002A3BD0 /* UIVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewController.swift; sourceTree = "<group>"; };
 		69E2C7EB25AF57F90088B65C /* ChangeKeyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeKeyPresenter.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				695F9DB425D1D38C0016DB21 /* Extensions */,
 				697F77CA25E1AC1700CCA3F6 /* SignInWithAppleToFirebase */,
 				6996BDD725A5CEDE00B88B39 /* AppDelegate.swift */,
+				699F18182600B929007BFAEB /* circleIcon.png */,
 				6996BDE025A5CEE400B88B39 /* Assets.xcassets */,
 				6996BDE225A5CEE400B88B39 /* LaunchScreen.storyboard */,
 				6997E0F525D2BEB10070D0BF /* GoogleService-Info.plist */,
@@ -354,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6996BDE425A5CEE400B88B39 /* LaunchScreen.storyboard in Resources */,
+				699F18192600B929007BFAEB /* circleIcon.png in Resources */,
 				692B922325EE81D200596C74 /* Localizable.strings in Resources */,
 				6996BDE125A5CEE400B88B39 /* Assets.xcassets in Resources */,
 				6997E0F625D2BEB10070D0BF /* GoogleService-Info.plist in Resources */,
@@ -482,7 +486,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -538,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -564,7 +568,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Danil-Ilichev.savePassword";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -584,7 +588,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Danil-Ilichev.savePassword";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

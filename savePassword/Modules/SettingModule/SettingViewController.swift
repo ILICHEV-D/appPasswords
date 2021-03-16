@@ -1,8 +1,9 @@
 import UIKit
+import MessageUI
 
 
 
-class SettingViewController: UIViewController, SettingViewProtocol {
+class SettingViewController: UIViewController, SettingViewProtocol, MFMailComposeViewControllerDelegate {
     
     var presenter: SettingPresenterProtocol
     
@@ -65,7 +66,7 @@ class SettingViewController: UIViewController, SettingViewProtocol {
 
 extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,6 +78,8 @@ extension SettingViewController: UITableViewDataSource {
         case 1:
             cell.textLabel?.text = NSLocalizedString(Localization.Setting.changeKey, comment: "")
         case 2:
+            cell.textLabel?.text = NSLocalizedString(Localization.Setting.contact, comment: "")
+        case 3:
             cell.textLabel?.text = NSLocalizedString(Localization.Setting.exit, comment: "")  
         default:
             cell.textLabel?.text = "error"
@@ -95,7 +98,21 @@ extension SettingViewController: UITableViewDelegate {
         case 1:
             presenter.goToChangeKey()
         case 2:
-            presenter.exit()
+            let mailComposeViewController = configureMailComposer()
+              if MFMailComposeViewController.canSendMail() {
+                  self.present(mailComposeViewController, animated: true, completion: nil)
+              } else {
+                  print("Can't send email")
+              }
+        case 3:
+            let alert = UIAlertController(title: NSLocalizedString(Localization.Setting.warning, comment: ""), message: NSLocalizedString(Localization.Setting.warningDescription, comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString(Localization.Setting.cancel, comment: ""), style: .cancel, handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString(Localization.Setting.exit, comment: ""), style: .destructive, handler: { _ in self.presenter.exit()
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
         default:
             print("error")
         }
@@ -106,4 +123,16 @@ extension SettingViewController: UITableViewDelegate {
         return 50
     }
     
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func configureMailComposer() -> MFMailComposeViewController{
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setToRecipients(["danil.ilich@icloud.com"])
+        mailComposeVC.setSubject("SavePassword")
+        mailComposeVC.setMessageBody("", isHTML: false)
+        return mailComposeVC
+    }
 }

@@ -54,7 +54,6 @@ class ListPresenter: ListPresenterProtocol {
             (self.view as! ListViewController).collectionView.reloadData()
         }
         else {
-            
             view?.listOfLogins = Common.listOfLoginAndPassword.filter({$0.type!.lowercased().contains(text.lowercased())})
             (self.view as! ListViewController).collectionView.reloadData()
         }

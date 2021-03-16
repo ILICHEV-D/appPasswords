@@ -1,24 +1,7 @@
 import Foundation
 
-//enum ChoicesTitle: String {
-//    case choice1 = "Choice 1"
-//    case choice2 = "Choice 2"
-//    case choice3 = "Choice 3"
-//
-//    func localizedString() -> String {
-//        return NSLocalizedString(self.rawValue, comment: "")
-//    }
-//
-//    static func getTitleFor(title:ChoicesTitle) -> String {
-//        print(title)
-//        print(title.localizedString())
-//        return title.localizedString()
-//    }
-//}
-
-
 enum Localization {
-
+    
     
     enum TabBar {
         static let password = "Passwords"
@@ -34,6 +17,7 @@ enum Localization {
         static let create = "Create"
         static let error = "Error"
         static let errorDescription = "ErrorDescription"
+        static let tooLong = "TooLong"
         static let ok = "Ok"
         static let login = "Login"
         static let password = "Password"
@@ -49,6 +33,10 @@ enum Localization {
         static let keyDescription = "KeyDescription"
         static let changeKeyDescription = "ChangeKeyDescription"
         static let buttonChange = "ButtonChange"
+        static let warning = "Warning"
+        static let warningDescription = "WarningDescription"
+        static let contact = "Contact"
+        static let cancel = "Cancel"
         
         enum Alert {
             static let error = "Error"
@@ -60,7 +48,7 @@ enum Localization {
         static let socialNetwork = "SocialNetwork"
         static let travelling = "Travelling"
         static let gamesEntertainments = "GamesEntertainments"
-
+        
     }
     
     enum Welcome {
