@@ -131,7 +131,7 @@ extension SettingViewController: UITableViewDelegate {
         let mailComposeVC = MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(["danil.ilich@icloud.com"])
-        mailComposeVC.setSubject("SavePassword")
+        mailComposeVC.setSubject("Oclate")
         mailComposeVC.setMessageBody("", isHTML: false)
         return mailComposeVC
     }

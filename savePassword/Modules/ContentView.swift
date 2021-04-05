@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
             VStack {
-                Image("circleIcon")
+                Image("launch")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.horizontal, 40)
@@ -23,7 +23,7 @@ struct ContentView: View {
                   Text(NSLocalizedString(Localization.Welcome.welcome, comment: ""))
                     .font(.title)
                   
-                  Text("SavePassword")
+                  Text("Oclate")
                     .font(.title)
                     .fontWeight(.semibold)
                 }

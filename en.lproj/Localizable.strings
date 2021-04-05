@@ -1,7 +1,7 @@
 "Passwords" = "Passwords";
 "Add" = "New password";
 "Setting"  = "Setting";
-
+"Search" = "Search";
 
 "Delete" = "Delete";
 
@@ -36,5 +36,5 @@
 "Travelling" = "Travelling";
 "GamesEntertainments" = "Games, entertainments";
 
-"WelcomeDescription" = "savePassword encrypts your passwords using encryption keys that are stored locally on your device. \n \n When you log in, you will receive a generated key. Save it. \n \n  Passwords are sent to the server already in encrypted form.";
+"WelcomeDescription" = "Oclate encrypts your passwords using encryption keys that are stored locally on your device. \n \n When you log in, you will receive a generated key. Save it. \n \n  Passwords are sent to the server already in encrypted form.";
 "Welcome" = "Welcome to";

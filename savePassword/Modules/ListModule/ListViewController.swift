@@ -126,7 +126,7 @@ private extension ListViewController {
         navigationItem.searchController?.searchBar.showsCancelButton = false
    //     navigationController?.navigationBar.isTranslucent = false
 
-        navigationItem.searchController?.searchBar.placeholder = "Поиск"
+        navigationItem.searchController?.searchBar.placeholder = NSLocalizedString(Localization.TabBar.search, comment: "")
 //        navigationItem.searchController?.searchBar.backgroundColor = .white
     }
 }

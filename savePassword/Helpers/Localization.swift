@@ -7,6 +7,7 @@ enum Localization {
         static let password = "Passwords"
         static let add = "Add"
         static let setting = "Setting"
+        static let search = "Search"
     }
     
     enum Password {
